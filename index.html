@@ -6,16 +6,21 @@
     <title>The Righteous Path | Follow His Footsteps</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600&family=Ramabhadra&family=Noto+Sans+Telugu:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Spectral:wght@300;400;600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Libre+Baskerville:wght@400;700&family=Ramabhadra&family=Noto+Sans+Telugu:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary-color: #1a252f;
-            --accent-color: #b89742; /* Premium Gold Accent */
-            --text-dark: #2c3e50;
-            --text-light: #f8f9fa;
-            --bg-light: #fdfbf7; /* Off-white warm background */
-            --transition-speed: 0.3s;
+            --primary-dark: #1a1f2e;
+            --accent-gold: #d4a574;
+            --accent-warm: #c49a6c;
+            --text-dark: #2d3748;
+            --text-medium: #4a5568;
+            --text-light: #f7fafc;
+            --bg-cream: #faf8f3;
+            --bg-white: #ffffff;
+            --shadow-soft: rgba(0, 0, 0, 0.08);
+            --shadow-medium: rgba(0, 0, 0, 0.12);
+            --transition: cubic-bezier(0.4, 0.0, 0.2, 1);
         }
 
         * {
@@ -25,14 +30,31 @@
         }
 
         body {
-            font-family: 'Inter', 'Noto Sans Telugu', sans-serif;
-            background-color: var(--bg-light);
+            font-family: 'Spectral', 'Noto Sans Telugu', serif;
+            background-color: var(--bg-cream);
             color: var(--text-dark);
-            line-height: 1.8;
+            line-height: 1.75;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Lang display controller */
+        /* Animated Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 165, 116, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(212, 165, 116, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Language Display Controller */
         .lang-en, .lang-te {
             display: none !important;
         }
@@ -45,121 +67,244 @@
             display: block !important;
         }
 
-        /* Inline handling for buttons/spans */
-        html[lang="en"] span.lang-en, html[lang="en"] a.lang-en {
+        html[lang="en"] span.lang-en, 
+        html[lang="en"] a.lang-en,
+        html[lang="en"] button.lang-en {
             display: inline-block !important;
         }
-        html[lang="te"] span.lang-te, html[lang="te"] a.lang-te {
+        
+        html[lang="te"] span.lang-te, 
+        html[lang="te"] a.lang-te,
+        html[lang="te"] button.lang-te {
             display: inline-block !important;
         }
 
-        /* Language Switcher Bar */
+        /* Language Switcher */
         .lang-switcher-container {
-            background-color: var(--primary-color);
-            padding: 10px 24px;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #242b3d 100%);
+            padding: 12px 24px;
             display: flex;
             justify-content: flex-end;
-            gap: 12px;
+            align-items: center;
+            gap: 8px;
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 2px solid var(--accent-color);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
+        }
+
+        .lang-switcher-label {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            font-weight: 400;
+            margin-right: 8px;
+            letter-spacing: 0.5px;
         }
 
         .lang-btn {
             background: transparent;
-            border: 1px solid transparent;
-            color: #a0aec0;
+            border: 1.5px solid transparent;
+            color: rgba(255, 255, 255, 0.6);
             cursor: pointer;
             font-size: 0.9rem;
             font-weight: 600;
-            padding: 6px 14px;
-            border-radius: 4px;
-            transition: all var(--transition-speed);
+            padding: 8px 18px;
+            border-radius: 6px;
+            transition: all 0.3s var(--transition);
+            font-family: inherit;
+            letter-spacing: 0.3px;
         }
 
         .lang-btn:hover {
             color: var(--text-light);
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .lang-btn.active {
-            color: var(--text-light);
-            border-color: var(--accent-color);
-            background-color: rgba(184, 151, 66, 0.2);
+            color: var(--primary-dark);
+            border-color: var(--accent-gold);
+            background: var(--accent-gold);
+            box-shadow: 0 4px 12px rgba(212, 165, 116, 0.3);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(26, 37, 47, 0.85), rgba(26, 37, 47, 0.95)), 
-                        url('https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&q=80&w=1920') no-repeat center center/cover;
+            position: relative;
+            background: linear-gradient(135deg, rgba(26, 31, 46, 0.92) 0%, rgba(36, 43, 61, 0.88) 100%), 
+                        url('https://images.unsplash.com/photo-1505142468610-359e7d316be0?auto=format&fit=crop&q=80&w=1920') no-repeat center center/cover;
             color: var(--text-light);
             text-align: center;
-            padding: 120px 20px;
+            padding: 140px 20px 120px;
+            min-height: 75vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 70vh;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(26, 31, 46, 0.4) 100%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            opacity: 0;
+            animation: fadeInUp 1s 0.2s forwards var(--transition);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero h1 {
-            font-family: 'Cinzel', 'Ramabhadra', serif;
-            font-size: 3.5rem;
-            letter-spacing: 2px;
-            margin-bottom: 24px;
+            font-family: 'Cormorant Garamond', 'Ramabhadra', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 28px;
             color: var(--text-light);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            line-height: 1.2;
         }
 
         html[lang="te"] .hero h1 {
-            font-family: 'Ramabhadra', 'Noto Sans Telugu', sans-serif;
-            font-size: 3.2rem;
+            font-family: 'Ramabhadra', 'Noto Sans Telugu', serif;
+            font-size: 4rem;
+            font-weight: 700;
+        }
+
+        .hero-divider {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            margin: 0 auto 32px;
+            opacity: 0;
+            animation: fadeIn 1s 0.6s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
         }
 
         .hero p.quote {
+            font-family: 'Crimson Text', serif;
             font-style: italic;
-            max-width: 800px;
-            font-size: 1.25rem;
-            margin-bottom: 40px;
-            color: #e2e8f0;
-            position: relative;
+            font-size: 1.35rem;
+            line-height: 1.8;
+            margin-bottom: 48px;
+            color: rgba(255, 255, 255, 0.95);
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            animation: fadeInUp 1s 0.4s forwards var(--transition);
         }
 
         .cta-button {
             display: inline-block;
-            background-color: var(--accent-color);
-            color: var(--primary-color);
-            padding: 14px 32px;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-warm) 100%);
+            color: var(--primary-dark);
+            padding: 16px 42px;
             font-weight: 700;
+            font-size: 0.95rem;
             text-decoration: none;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: 30px;
-            box-shadow: 0 4px 15px rgba(184, 151, 66, 0.3);
-            transition: all var(--transition-speed);
+            letter-spacing: 1.5px;
+            border-radius: 50px;
+            box-shadow: 0 6px 25px rgba(212, 165, 116, 0.4);
+            transition: all 0.4s var(--transition);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeInUp 1s 0.8s forwards var(--transition);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
         }
 
         .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(184, 151, 66, 0.5);
-            background-color: #c9a852;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 35px rgba(212, 165, 116, 0.5);
         }
 
-        /* Main Content Styling */
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: fadeIn 1s 1.2s forwards, bounce 2s 1.2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        .scroll-indicator svg {
+            width: 24px;
+            height: 24px;
+            opacity: 0.7;
+        }
+
+        /* Main Content Sections */
         .section-container {
-            max-width: 1100px;
-            margin: 80px auto;
-            padding: 0 20px;
+            max-width: 1140px;
+            margin: 100px auto;
+            padding: 0 24px;
         }
 
         .section-title {
             text-align: center;
-            font-family: 'Cinzel', 'Ramabhadra', serif;
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
+            font-family: 'Cormorant Garamond', 'Ramabhadra', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 24px;
             position: relative;
-            padding-bottom: 15px;
+            padding-bottom: 20px;
+        }
+
+        html[lang="te"] .section-title {
+            font-family: 'Ramabhadra', 'Noto Sans Telugu', serif;
         }
 
         .section-title::after {
@@ -168,56 +313,744 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
+            width: 60px;
             height: 3px;
-            background-color: var(--accent-color);
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
         }
 
         .intro-text {
             text-align: center;
-            max-width: 850px;
-            margin: 0 auto 50px auto;
+            max-width: 820px;
+            margin: 0 auto 60px;
             font-size: 1.15rem;
-            color: #4a5568;
+            line-height: 1.9;
+            color: var(--text-medium);
         }
 
         /* Featured Verse Box */
         .verse-box {
-            background-color: #fff;
-            border-left: 4px solid var(--accent-color);
-            padding: 30px;
-            border-radius: 0 8px 8px 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.04);
-            margin: 40px 0;
+            background: linear-gradient(135deg, var(--bg-white) 0%, #fefdfb 100%);
+            border-left: 5px solid var(--accent-gold);
+            padding: 42px 40px;
+            border-radius: 0 12px 12px 0;
+            box-shadow: 0 8px 30px var(--shadow-soft);
+            margin: 50px 0;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s var(--transition);
+        }
+
+        .verse-box::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 120px;
+            font-family: 'Cormorant Garamond', serif;
+            color: rgba(212, 165, 116, 0.08);
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .verse-box:hover {
+            transform: translateX(5px);
+            box-shadow: 0 12px 40px var(--shadow-medium);
+        }
+
+        .verse-text {
+            font-family: 'Crimson Text', serif;
             font-style: italic;
+            font-size: 1.3rem;
+            line-height: 1.9;
+            color: var(--text-dark);
+            position: relative;
+            z-index: 1;
         }
 
         .verse-context {
             display: block;
-            margin-top: 10px;
+            margin-top: 20px;
             font-weight: 600;
             font-style: normal;
-            color: var(--accent-color);
+            font-size: 1rem;
+            color: var(--accent-gold);
+            letter-spacing: 0.5px;
         }
 
-        /* Feature/Ministry Cards Grid */
+        /* Grid Container for Cards */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 40px;
-            margin-top: 60px;
+            margin-top: 70px;
         }
 
         .card {
-            background: #ffffff;
-            border-radius: 8px;
-            padding: 40px 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 48px 36px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
             border-top: 3px solid transparent;
-            transition: all var(--transition-speed);
+            transition: all 0.4s var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-warm));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s var(--transition);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            border-top-color: var(--accent-color);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.
+            transform: translateY(-8px);
+            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.15), rgba(212, 165, 116, 0.08));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 28px;
+            transition: all 0.4s var(--transition);
+        }
+
+        .card:hover .card-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.25), rgba(212, 165, 116, 0.15));
+        }
+
+        .card h3 {
+            font-family: 'Libre Baskerville', 'Ramabhadra', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 16px;
+        }
+
+        html[lang="te"] .card h3 {
+            font-family: 'Ramabhadra', 'Noto Sans Telugu', serif;
+        }
+
+        .card p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-medium);
+        }
+
+        /* Teachings Section with Special Layout */
+        .teachings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .teaching-item {
+            background: linear-gradient(135deg, var(--bg-white), #fefdfb);
+            padding: 32px;
+            border-radius: 10px;
+            border: 1px solid rgba(212, 165, 116, 0.2);
+            transition: all 0.3s var(--transition);
+            position: relative;
+        }
+
+        .teaching-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .teaching-item:hover::after {
+            opacity: 1;
+        }
+
+        .teaching-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+            border-color: var(--accent-gold);
+        }
+
+        .teaching-number {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-warm));
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            font-size: 0.9rem;
+        }
+
+        .teaching-item h4 {
+            font-family: 'Libre Baskerville', 'Ramabhadra', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+        }
+
+        html[lang="te"] .teaching-item h4 {
+            font-family: 'Ramabhadra', 'Noto Sans Telugu', serif;
+        }
+
+        .teaching-item p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-medium);
+        }
+
+        /* Call to Action Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #242b3d 100%);
+            color: var(--text-light);
+            text-align: center;
+            padding: 100px 24px;
+            margin: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 50%, rgba(212, 165, 116, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 50%, rgba(212, 165, 116, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .cta-section h2 {
+            font-family: 'Cormorant Garamond', 'Ramabhadra', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        html[lang="te"] .cta-section h2 {
+            font-family: 'Ramabhadra', 'Noto Sans Telugu', serif;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section .cta-button {
+            background: var(--bg-white);
+            color: var(--primary-dark);
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.2);
+            animation: none;
+            opacity: 1;
+        }
+
+        .cta-section .cta-button:hover {
+            background: var(--bg-cream);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding: 60px 24px 40px;
+        }
+
+        .footer-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            font-family: 'Cormorant Garamond', 'Ramabhadra', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 24px;
+        }
+
+        html[lang="te"] .footer-title {
+            font-family: 'Ramabhadra', 'Noto Sans Telugu', serif;
+        }
+
+        .footer-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 32px;
+            opacity: 0.9;
+        }
+
+        .footer-divider {
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            margin: 32px auto;
+        }
+
+        .footer-copyright {
+            font-size: 0.9rem;
+            opacity: 0.6;
+            margin-top: 24px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            html[lang="te"] .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero p.quote {
+                font-size: 1.15rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .grid-container {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .teachings-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 100px 16px 80px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            html[lang="te"] .hero h1 {
+                font-size: 2.3rem;
+            }
+
+            .section-container {
+                margin: 60px auto;
+                padding: 0 16px;
+            }
+
+            .verse-box {
+                padding: 32px 24px;
+            }
+
+            .card {
+                padding: 36px 28px;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Selection Styling */
+        ::selection {
+            background: var(--accent-gold);
+            color: white;
+        }
+
+        ::-moz-selection {
+            background: var(--accent-gold);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="lang-switcher-container">
+        <span class="lang-switcher-label">Language:</span>
+        <button class="lang-btn active" data-lang="en">English</button>
+        <button class="lang-btn" data-lang="te">తెలుగు</button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="lang-en">The Righteous Path</h1>
+            <h1 class="lang-te">నీతిమార్గం</h1>
+            
+            <div class="hero-divider"></div>
+            
+            <p class="quote lang-en">
+                "Enter through the narrow gate. For wide is the gate and broad is the road that leads to destruction, and many enter through it. But small is the gate and narrow the road that leads to life, and only a few find it."
+            </p>
+            <p class="quote lang-te">
+                "ఇరుకైన ద్వారము గుండా ప్రవేశించండి. నాశనమునకు దారితీయు ద్వారము విశాలమైనది, దారి వెడల్పైనది, దాని గుండా ప్రవేశించువారు అనేకులు. జీవమునకు దారితీయు ద్వారము ఇరుకైనది, దారి ఇరుకైనది, దాని గుండా ప్రవేశించువారు కొద్దిమందే."
+            </p>
+            
+            <a href="#ministry" class="cta-button lang-en">Begin Your Journey</a>
+            <a href="#ministry" class="cta-button lang-te">మీ ప్రయాణం ప్రారంభించండి</a>
+        </div>
+        
+        <div class="scroll-indicator">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section-container">
+        <h2 class="section-title lang-en">Walking in His Light</h2>
+        <h2 class="section-title lang-te">ఆయన వెలుగులో నడుచుట</h2>
+        
+        <p class="intro-text lang-en">
+            The righteous path is not merely a destination, but a journey of faith, transformation, and unwavering commitment to following the footsteps of our Lord Jesus Christ. Every step forward is a testament to His grace and mercy.
+        </p>
+        <p class="intro-text lang-te">
+            నీతిమార్గం కేవలం గమ్యస్థానం మాత్రమే కాదు, విశ్వాసం, పరివర్తన మరియు మన ప్రభువైన యేసుక్రీస్తు అడుగుజాడలను అనుసరించడానికి అచంచలమైన నిబద్ధత యొక్క ప్రయాణం. ముందుకు వేసే ప్రతి అడుగు ఆయన కృప మరియు దయకు సాక్ష్యం.
+        </p>
+
+        <div class="verse-box">
+            <p class="verse-text lang-en">
+                "Your word is a lamp for my feet, a light on my path. I have taken an oath and confirmed it, that I will follow your righteous laws."
+            </p>
+            <p class="verse-text lang-te">
+                "నీ వాక్యము నా కాలికి దీపము, నా త్రోవకు వెలుగు. నీ నీతి నియమములను అనుసరించెదనని ప్రమాణము చేసి, దాని నెరవేర్చెదను."
+            </p>
+            <span class="verse-context lang-en">— Psalm 119:105-106</span>
+            <span class="verse-context lang-te">— కీర్తనలు 119:105-106</span>
+        </div>
+    </section>
+
+    <!-- Ministry Cards Section -->
+    <section id="ministry" class="section-container">
+        <h2 class="section-title lang-en">Our Ministry</h2>
+        <h2 class="section-title lang-te">మా పరిచర్య</h2>
+        
+        <div class="grid-container">
+            <div class="card">
+                <div class="card-icon">📖</div>
+                <h3 class="lang-en">Biblical Teaching</h3>
+                <h3 class="lang-te">బైబిల్ బోధన</h3>
+                <p class="lang-en">
+                    Dive deep into God's Word with systematic study and clear exposition. We believe Scripture is the foundation of faith and the source of all spiritual wisdom.
+                </p>
+                <p class="lang-te">
+                    క్రమబద్ధమైన అధ్యయనం మరియు స్పష్టమైన వివరణతో దేవుని వాక్యంలో లోతుగా మునిగిపోండి. గ్రంథం విశ్వాసానికి పునాది మరియు అన్ని ఆధ్యాత్మిక జ్ఞానానికి మూలం అని మేము నమ్ముతున్నాము.
+                </p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">🙏</div>
+                <h3 class="lang-en">Prayer & Fellowship</h3>
+                <h3 class="lang-te">ప్రార్థన & సహవాసం</h3>
+                <p class="lang-en">
+                    Join believers in fervent prayer and authentic community. Together we seek God's face, intercede for one another, and build lasting relationships in Christ.
+                </p>
+                <p class="lang-te">
+                    తీవ్రమైన ప్రార్థన మరియు ప్రామాణికమైన సమాజంలో విశ్వాసులతో చేరండి. కలిసి మనం దేవుని ముఖాన్ని వెతుకుతాము, ఒకరికొకరు మధ్యవర్తిత్వం వహిస్తాము మరియు క్రీస్తులో శాశ్వత సంబంధాలను నిర్మిస్తాము.
+                </p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">❤️</div>
+                <h3 class="lang-en">Compassionate Outreach</h3>
+                <h3 class="lang-te">దయాపూర్వక ప్రభావం</h3>
+                <p class="lang-en">
+                    Serve the community with Christ's love through practical acts of service. We extend God's grace to those in need, demonstrating the Gospel through action.
+                </p>
+                <p class="lang-te">
+                    ఆచరణాత్మక సేవా చర్యల ద్వారా క్రీస్తు ప్రేమతో సమాజానికి సేవ చేయండి. అవసరంలో ఉన్నవారికి మేము దేవుని కృపను విస్తరిస్తాము, చర్య ద్వారా సువార్తను ప్రదర్శిస్తాము.
+                </p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">✝️</div>
+                <h3 class="lang-en">Discipleship</h3>
+                <h3 class="lang-te">శిష్యత్వం</h3>
+                <p class="lang-en">
+                    Grow in spiritual maturity through intentional mentorship and accountability. We equip believers to live out their faith with courage and conviction.
+                </p>
+                <p class="lang-te">
+                    ఉద్దేశపూర్వక మార్గదర్శకత్వం మరియు జవాబుదారీతనం ద్వారా ఆధ్యాత్మిక పరిపక్వతలో పెరగండి. ధైర్యం మరియు విశ్వాసంతో వారి విశ్వాసాన్ని జీవించడానికి విశ్వాసులను మేము సన్నద్ధం చేస్తాము.
+                </p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">🌍</div>
+                <h3 class="lang-en">Mission & Evangelism</h3>
+                <h3 class="lang-te">మిషన్ & సువార్త</h3>
+                <p class="lang-en">
+                    Proclaim the Good News to all nations. We are called to share Christ's message of salvation and make disciples of all peoples.
+                </p>
+                <p class="lang-te">
+                    అన్ని దేశాలకు సువార్తను ప్రకటించండి. క్రీస్తు రక్షణ సందేశాన్ని పంచుకోవడానికి మరియు అన్ని ప్రజల శిష్యులను చేయడానికి మేము పిలువబడ్డాము.
+                </p>
+            </div>
+            
+            <div class="card">
+                <div class="card-icon">🕊️</div>
+                <h3 class="lang-en">Worship & Praise</h3>
+                <h3 class="lang-te">ఆరాధన & స్తుతి</h3>
+                <p class="lang-en">
+                    Lift hearts in joyful worship to our Creator. Through music, prayer, and testimony, we glorify God and experience His transforming presence.
+                </p>
+                <p class="lang-te">
+                    మన సృష్టికర్తకు ఆనందకరమైన ఆరాధనలో హృదయాలను పైకెత్తండి. సంగీతం, ప్రార్థన మరియు సాక్ష్యం ద్వారా, మేము దేవుణ్ణి మహిమపరుస్తాము మరియు ఆయన మార్చే ఉనికిని అనుభవిస్తాము.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Teachings Section -->
+    <section class="section-container">
+        <h2 class="section-title lang-en">Core Teachings</h2>
+        <h2 class="section-title lang-te">ప్రధాన బోధనలు</h2>
+        
+        <p class="intro-text lang-en">
+            These fundamental truths guide our walk with Christ and form the bedrock of our faith community.
+        </p>
+        <p class="intro-text lang-te">
+            ఈ ప్రాథమిక సత్యాలు క్రీస్తుతో మన నడకకు మార్గనిర్దేశం చేస్తాయి మరియు మన విశ్వాస సమాజానికి పునాది ఏర్పరుస్తాయి.
+        </p>
+
+        <div class="teachings-grid">
+            <div class="teaching-item">
+                <div class="teaching-number">1</div>
+                <h4 class="lang-en">Salvation Through Christ Alone</h4>
+                <h4 class="lang-te">క్రీస్తు ద్వారా మాత్రమే రక్షణ</h4>
+                <p class="lang-en">
+                    We are saved by grace through faith in Jesus Christ, not by works. It is the gift of God that transforms hearts and grants eternal life.
+                </p>
+                <p class="lang-te">
+                    మనం యేసుక్రీస్తులో విశ్వాసం ద్వారా కృపచేత రక్షింపబడతాము, కార్యాల ద్వారా కాదు. ఇది హృదయాలను మార్చే మరియు శాశ్వత జీవితాన్ని ప్రసాదించే దేవుని బహుమానం.
+                </p>
+            </div>
+            
+            <div class="teaching-item">
+                <div class="teaching-number">2</div>
+                <h4 class="lang-en">Authority of Scripture</h4>
+                <h4 class="lang-te">గ్రంథం యొక్క అధికారం</h4>
+                <p class="lang-en">
+                    The Bible is God's inspired, infallible Word—our final authority for faith, doctrine, and daily living in obedience to Christ.
+                </p>
+                <p class="lang-te">
+                    బైబిల్ దేవుని ప్రేరేపిత, తప్పులేని వాక్యం—విశ్వాసం, సిద్ధాంతం మరియు క్రీస్తుకు విధేయతతో రోజువారీ జీవనానికి మన అంతిమ అధికారం.
+                </p>
+            </div>
+            
+            <div class="teaching-item">
+                <div class="teaching-number">3</div>
+                <h4 class="lang-en">Love God, Love Others</h4>
+                <h4 class="lang-te">దేవుణ్ణి ప్రేమించు, ఇతరులను ప్రేమించు</h4>
+                <p class="lang-en">
+                    Jesus commanded us to love the Lord with all our heart and love our neighbors as ourselves—the greatest commandments that summarize all others.
+                </p>
+                <p class="lang-te">
+                    యేసు మనల్ని మన పూర్ణ హృదయంతో ప్రభువును ప్రేమించమని మరియు మన పొరుగువారిని మనలాగే ప్రేమించమని ఆజ్ఞాపించాడు—అన్నిటిని సంగ్రహించే గొప్ప ఆజ్ఞలు.
+                </p>
+            </div>
+            
+            <div class="teaching-item">
+                <div class="teaching-number">4</div>
+                <h4 class="lang-en">Holy Spirit Empowerment</h4>
+                <h4 class="lang-te">పరిశుద్ధాత్మ శక్తి</h4>
+                <p class="lang-en">
+                    The Holy Spirit indwells believers, empowering us for service, sanctifying our hearts, and bearing fruit in our lives for God's glory.
+                </p>
+                <p class="lang-te">
+                    పరిశుద్ధాత్మ విశ్వాసులలో నివసిస్తుంది, సేవ కోసం మనల్ని శక్తివంతం చేస్తుంది, మన హృదయాలను పవిత్రం చేస్తుంది మరియు దేవుని మహిమ కోసం మన జీవితాల్లో ఫలాన్ని ఇస్తుంది.
+                </p>
+            </div>
+            
+            <div class="teaching-item">
+                <div class="teaching-number">5</div>
+                <h4 class="lang-en">Second Coming of Christ</h4>
+                <h4 class="lang-te">క్రీస్తు రెండవ రాకడ</h4>
+                <p class="lang-en">
+                    We eagerly await Christ's return when He will establish His eternal kingdom and judge the living and the dead with perfect righteousness.
+                </p>
+                <p class="lang-te">
+                    క్రీస్తు తన శాశ్వత రాజ్యాన్ని స్థాపించినప్పుడు మరియు సజీవులను మరియు మృతులను సంపూర్ణ నీతితో తీర్పు తీర్చినప్పుడు మేము ఆయన తిరిగి రావడం కోసం ఆత్రంగా ఎదురుచూస్తున్నాము.
+                </p>
+            </div>
+            
+            <div class="teaching-item">
+                <div class="teaching-number">6</div>
+                <h4 class="lang-en">Unity in the Body</h4>
+                <h4 class="lang-te">దేహంలో ఐక్యత</h4>
+                <p class="lang-en">
+                    As members of Christ's body, we are called to unity, mutual love, and service—using our diverse gifts to build up the Church.
+                </p>
+                <p class="lang-te">
+                    క్రీస్తు శరీరంలో సభ్యులుగా, మేము ఐక్యత, పరస్పర ప్రేమ మరియు సేవకు పిలువబడ్డాము—చర్చిని నిర్మించడానికి మన వైవిధ్యమైన బహుమతులను ఉపయోగించడం.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <h2 class="lang-en">Ready to Take the Next Step?</h2>
+        <h2 class="lang-te">తదుపరి అడుగు వేయడానికి సిద్ధంగా ఉన్నారా?</h2>
+        
+        <p class="lang-en">
+            Join us on this journey of faith. Whether you're seeking Christ for the first time or deepening your walk with Him, we welcome you with open arms.
+        </p>
+        <p class="lang-te">
+            ఈ విశ్వాస ప్రయాణంలో మాతో చేరండి. మీరు మొదటిసారి క్రీస్తును వెతుకుతున్నా లేదా ఆయనతో మీ నడకను లోతుగా చేసుకుంటున్నా, మేము మిమ్మల్ని తెరిచిన చేతులతో స్వాగతిస్తున్నాము.
+        </p>
+        
+        <a href="#contact" class="cta-button lang-en">Connect With Us</a>
+        <a href="#contact" class="cta-button lang-te">మాతో కనెక్ట్ అవ్వండి</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3 class="footer-title lang-en">The Righteous Path</h3>
+            <h3 class="footer-title lang-te">నీతిమార్గం</h3>
+            
+            <p class="footer-text lang-en">
+                "Trust in the Lord with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight."
+            </p>
+            <p class="footer-text lang-te">
+                "నీ పూర్ణ హృదయంతో ప్రభువును విశ్వసించు, నీ సొంత అవగాహనపై ఆధారపడకు; నీ అన్ని మార్గాలలో ఆయనకు లొంగిపో, అప్పుడు ఆయన నీ మార్గాలను సరళంగా చేస్తాడు."
+            </p>
+            
+            <span class="verse-context lang-en">— Proverbs 3:5-6</span>
+            <span class="verse-context lang-te">— సామెతలు 3:5-6</span>
+            
+            <div class="footer-divider"></div>
+            
+            <p class="footer-copyright lang-en">
+                © 2024 The Righteous Path Ministry. All rights reserved. | Walking in faith, guided by grace.
+            </p>
+            <p class="footer-copyright lang-te">
+                © 2024 నీతిమార్గం పరిచర్య. అన్ని హక్కులూ రక్షించబడ్డాయి. | విశ్వాసంలో నడుస్తూ, కృపచే మార్గదర్శకత్వం.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Language Switching -->
+    <script>
+        // Language switcher functionality
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const htmlElement = document.documentElement;
+        
+        // Get saved language preference or default to 'en'
+        const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+        htmlElement.setAttribute('lang', savedLang);
+        
+        // Update active button based on saved language
+        langButtons.forEach(btn => {
+            if (btn.dataset.lang === savedLang) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+        
+        // Add click event listeners
+        langButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const selectedLang = button.dataset.lang;
+                
+                // Update HTML lang attribute
+                htmlElement.setAttribute('lang', selectedLang);
+                
+                // Save preference
+                localStorage.setItem('preferredLanguage', selectedLang);
+                
+                // Update active state
+                langButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+
+        // Smooth scroll with offset for sticky header
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.offsetTop - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add fade-in animation for cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(30px)';
+                    entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 100);
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and teaching items
+        document.querySelectorAll('.card, .teaching-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
