@@ -21,23 +21,59 @@
         }
 
         body {
-            font-family: 'Georgia', serif;
+            font-family: 'Georgia', 'Gautami', serif;
             background-color: var(--bg-light);
             color: var(--text-dark);
             line-height: 1.8;
+        }
+
+        /* Language Switcher Navbar */
+        .lang-nav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: 60px;
+            background: rgba(13, 18, 31, 0.85);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0 2rem;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .lang-btn {
+            background: transparent;
+            color: var(--text-light);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.35rem 1rem;
+            margin-left: 0.5rem;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            border-color: var(--accent-color);
+            font-weight: bold;
         }
 
         /* Hero Section */
         header {
             background: linear-gradient(rgba(13, 18, 31, 0.85), rgba(13, 18, 31, 0.98)), 
                         url('https://images.unsplash.com/photo-1599675931211-1a3b567b5e40?q=80&w=2070') no-repeat center center/cover;
-            min-height: 80vh;
+            min-height: 85vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 2rem;
+            padding: 7rem 2rem 2rem 2rem;
             color: var(--text-light);
             position: relative;
         }
@@ -65,7 +101,7 @@
 
         .hero-subtitle {
             font-size: 1.25rem;
-            max-width: 600px;
+            max-width: 650px;
             font-style: italic;
             margin-bottom: 2rem;
             font-family: 'Times New Roman', serif;
@@ -141,7 +177,7 @@
             letter-spacing: 1px;
         }
 
-        /* Grid / Columns for Christ's Ministry Model */
+        /* Grid Setup */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -231,57 +267,97 @@
             color: #777;
             background-color: #f1f1f1;
         }
+
+        /* Language Toggle Display Rules */
+        .lang-te { display: none; } /* Default hiding Telugu elements */
     </style>
 </head>
 <body>
 
+    <!-- Language Control Bar -->
+    <nav class="lang-nav">
+        <button id="btn-en" class="lang-btn active" onclick="switchLanguage('en')">English</button>
+        <button id="btn-te" class="lang-btn" onclick="switchLanguage('te')">తెలుగు</button>
+    </nav>
+
     <!-- Hero Header -->
     <header>
         <div class="hero-content">
-            <h1 class="hero-title">The Righteous Path</h1>
-            <p class="hero-subtitle">"For even the Son of Man did not come to be served, but to serve, and to give his life as a ransom for many."</p>
-            <a href="#join" class="btn">Walk as He Walked</a>
+            <h1 class="hero-title lang-en">The Righteous Path</h1>
+            <h1 class="hero-title lang-te">ధర్మ మార్గం</h1>
+            
+            <p class="hero-subtitle lang-en">"For even the Son of Man did not come to be served, but to serve, and to give his life as a ransom for many."</p>
+            <p class="hero-subtitle lang-te">"మనుష్యకుమారుడు పరిచారము చేయించుకొనుటకు రాలేదు గాని పరిచారము చేయుటకును अनेకులకు ప్రతిగా విమోచన క్రయధనముగా తన ప్రాణము ఇచ్చుటకును వచ్చెను."</p>
+            
+            <a href="#join" class="btn lang-en">Walk as He Walked</a>
+            <a href="#join" class="btn lang-te">ఆయన అడుగుజాడల్లో నడవండి</a>
         </div>
     </header>
 
     <!-- Mission Intent -->
     <section id="mission">
-        <h2 class="section-title">Our Master's Blueprint</h2>
-        <p style="font-size: 1.15rem; max-width: 750px; margin: 0 auto;">
+        <h2 class="section-title lang-en">Our Master's Blueprint</h2>
+        <h2 class="section-title lang-te">మన ప్రభువు మార్గదర్శకం</h2>
+        
+        <p style="font-size: 1.15rem; max-width: 750px; margin: 0 auto;" class="lang-en">
             Jesus revolutionized humankind not with wealth or armies, but through radical empathy, reaching down into the dust to elevate the broken. We strive to be His hands and feet across the globe.
         </p>
+        <p style="font-size: 1.15rem; max-width: 750px; margin: 0 auto;" class="lang-te">
+            యేసుక్రీస్తు సంపదతో లేదా సైన్యాలతో కాకుండా, నిరుపేదలను మరియు నలిగిపోయిన హృదయాలను పైకి లేపడం ద్వారా మానవాళిని ప్రేమతో గెలిచారు. ప్రపంచవ్యాప్తంగా ఆయన చేతులు మరియు పాదాలుగా సేవ చేయడానికి మేము ప్రయత్నిస్తున్నాము.
+        </p>
 
-        <div class="scripture-box">
+        <div class="scripture-box lang-en">
             "He has anointed me to proclaim good news to the poor. He has sent me to proclaim freedom for the prisoners and recovery of sight for the blind, to set the oppressed free."
             <span class="scripture-ref">Luke 4:18</span>
+        </div>
+        <div class="scripture-box lang-te">
+            "దరిద్రులకు సువార్త ప్రకటించుటకై ప్రభువు నన్ను అభిషేకించెను; చెరలో నున్నవారికి విడుదలను, గ్రుడ్డివారికి చూపును ప్రకటించుటకును, నలిగినవారిని విడిపించుటకును ఆయన నన్ను పంపియున్నాడు."
+            <span class="scripture-ref">లూకా 4:18</span>
         </div>
     </section>
 
     <!-- Christ's Ministry Layout -->
     <section style="background-color: #fff; max-width: 100%; border-top: 1px solid #f0f0f0;">
         <div style="max-width: 900px; margin: 0 auto;">
-            <h2 class="section-title">The Ministry of Compassion</h2>
+            <h2 class="section-title lang-en">The Ministry of Compassion</h2>
+            <h2 class="section-title lang-te">కరుణతో కూడిన సేవ</h2>
+            
             <div class="grid">
                 
                 <!-- Pillar 1 -->
                 <div class="card">
-                    <h3>Feeding the Hungry</h3>
-                    <span class="card-verse">"Jesus took the five loaves and the two fish... and gave them to the disciples to distribute..." — Luke 9:16</span>
-                    <p>Following His miracle of provision, we dedicate ourselves to eliminating physical hunger, understanding that a nourished body prepares the heart to receive spiritual love.</p>
+                    <h3 class="lang-en">Feeding the Hungry</h3>
+                    <h3 class="lang-te">ఆకలితో ఉన్నవారికి అన్నదానం</h3>
+                    
+                    <span class="card-verse lang-en">"Jesus took the five loaves and the two fish... and gave them to the disciples to distribute..." — Luke 9:16</span>
+                    <span class="card-verse lang-te">"యేసు ఆ ఐదు రొట్టెలను రెండు చేపలను పట్టుకొని... శిష్యులకు వడ్డించమని ఇచ్చెను..." — లూకా 9:16</span>
+                    
+                    <p class="lang-en">Following His miracle of provision, we dedicate ourselves to eliminating physical hunger, understanding that a nourished body prepares the heart to receive spiritual love.</p>
+                    <p class="lang-te">ఆయన చూపిన అద్భుతమైన మార్గంలో, మేము ఆకలిని నిర్మూలించడానికి మమ్మల్ని మేము సమర్పించుకుంటున్నాము. ఆహారం పొందిన శరీరం దైవిక ప్రేమను స్వీకరించడానికి సిద్ధంగా ఉంటుందని మేము నమ్ముతున్నాము.</p>
                 </div>
                 
                 <!-- Pillar 2 -->
                 <div class="card">
-                    <h3>Healing the Broken</h3>
-                    <span class="card-verse">"When he saw the crowds, he had compassion on them, because they were harassed and helpless..." — Matthew 9:36</span>
-                    <p>Jesus moved toward pain, never away from it. We provide emotional support, fellowship, and basic aid to the lonely, outcast, and abandoned souls in society.</p>
+                    <h3 class="lang-en">Healing the Broken</h3>
+                    <h3 class="lang-te">నలిగిన హృదయాలను ఆదరించడం</h3>
+                    
+                    <span class="card-verse lang-en">"When he saw the crowds, he had compassion on them, because they were harassed and helpless..." — Matthew 9:36</span>
+                    <span class="card-verse lang-te">"ఆయన సమూహములను చూచి, వారు కాపరిలేని గొర్రెలవలె విసికి చెదరియున్నందున వారిమీద కనికరపడెను..." — మత్తయి 9:36</span>
+                    
+                    <p class="lang-en">Jesus moved toward pain, never away from it. We provide emotional support, fellowship, and basic aid to the lonely, outcast, and abandoned souls in society.</p>
+                    <p class="lang-te">యేసు ఎల్లప్పుడూ బాధల్లో ఉన్నవారికి తోడుగా నిలిచారు. సమాజంలో ఒంటరిగా ఉన్నవారికి, విస్మరించబడిన ఆత్మలకు మేము మానసిక మరియు ప్రాథమిక సహాయాన్ని అందిస్తాము.</p>
                 </div>
                 
                 <!-- Pillar 3 -->
                 <div class="card">
-                    <h3>Uplifting the Lowly</h3>
-                    <span class="card-verse">"Truly I tell you, whatever you did for one of the least of these brothers and sisters of mine, you did for me." — Matthew 25:40</span>
-                    <p>Recognizing the divine worth in every single human being, our mission actively seeks out the destitute to restore dignity, hope, and real-world relief.</p>
+                    <h3 class="lang-en">Uplifting the Lowly</h3>
+                    <h3 class="lang-te">నిరుపేదలను పైకి లేపడం</h3>
+                    
+                    <span class="card-verse lang-en">"Truly I tell you, whatever you did for one of the least of these brothers and sisters of mine, you did for me." — Matthew 25:40</span>
+                    <span class="card-verse lang-te">"మిక్కిలి అల్పులైన యీ నా సహోదరులలో ఒకనికి మీరు చేసితిరి గనుక నాకు చేసితిరని నిశ్చయముగా మీతో చెప్పుచున్నాను." — మత్తయి 25:40</span>
+                    
+                    <p class="lang-en">Recognizing the divine worth in every single human being, our mission actively seeks out the destitute to restore dignity, hope, and real-world relief.</p>
+                    <p class="lang-te">ప్రతి మనిషిలోనూ దైవత్వాన్ని గుర్తిస్తూ, మా మిషన్ నిరుపేదలను వెతుక్కుంటూ వెళ్లి వారికి గౌరవాన్ని, ఆశను మరియు నిజమైన సహాయాన్ని అందిస్తుంది.</p>
                 </div>
 
             </div>
@@ -290,31 +366,69 @@
 
     <!-- Call to True Discipleship -->
     <section>
-        <div class="scripture-box" style="border-left: none; border-right: 3px solid var(--accent-color); text-align: right;">
+        <div class="scripture-box lang-en" style="border-left: none; border-right: 3px solid var(--accent-color); text-align: right;">
             "Dear children, let us not love with words or speech but with actions and in truth."
             <span class="scripture-ref">1 John 3:18</span>
+        </div>
+        <div class="scripture-box lang-te" style="border-left: none; border-right: 3px solid var(--accent-color); text-align: right;">
+            "చిన్న పిల్లలారా, మాటతోను నాలుకతోను కాక క్రియతోను సత్యముతోను ప్రేమింతము."
+            <span class="scripture-ref">1 యోహాను 3:18</span>
         </div>
     </section>
 
     <!-- Connect Form -->
     <section id="join" style="padding: 0 2rem;">
         <div class="form-container">
-            <h2>Join the Global Fellowship</h2>
-            <p>If you are ready to put love into motion and serve humanity just as Jesus did, connect with us today.</p>
+            <h2 class="lang-en">Join the Global Fellowship</h2>
+            <h2 class="lang-te">ఈ దైవిక సేవలో భాగస్వామ్యులు అవ్వండి</h2>
+            
+            <p class="lang-en">If you are ready to put love into motion and serve humanity just as Jesus did, connect with us today.</p>
+            <p class="lang-te">మీరు కూడా ప్రేమను చేతల్లో చూపిస్తూ, యేసుక్రీస్తు వలె మానవాళికి సేవ చేయడానికి సిద్ధంగా ఉంటే, ఈ రోజు మాతో కనెక్ట్ అవ్వండి.</p>
             
             <form class="contact-form" action="#" method="POST">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email Address" required>
-                <textarea name="message" rows="5" placeholder="Share how your heart desires to serve or collaborate in this mission..." required></textarea>
-                <button type="submit" class="btn-submit">Offer My Hands</button>
+                <input type="text" name="name" placeholder="Your Name / మీ పేరు" required>
+                <input type="email" name="email" placeholder="Your Email Address / మీ ఈమెయిల్" required>
+                <textarea name="message" rows="5" placeholder="Share how your heart desires to serve... / మీ హృదయపూర్వక సేవా భావాన్ని పంచుకోండి..." required></textarea>
+                
+                <button type="submit" class="btn-submit lang-en">Offer My Hands</button>
+                <button type="submit" class="btn-submit lang-te">నా సహాయం అందిస్తాను</button>
             </form>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 The Righteous Path Mission. Rooted in Christ's love, built for all humankind.</p>
+        <p class="lang-en">&copy; 2026 The Righteous Path Mission. Rooted in Christ's love, built for all humankind.</p>
+        <p class="lang-te">&copy; 2026 ధర్మ మార్గం మిషన్. క్రీస్తు ప్రేమతో, మానవాళి సేవ కోసం.</p>
     </footer>
+
+    <!-- JavaScript Translation Engine -->
+    <script>
+        function switchLanguage(lang) {
+            const englishElements = document.querySelectorAll('.lang-en');
+            const teluguElements = document.querySelectorAll('.lang-te');
+            const btnEn = document.getElementById('btn-en');
+            const btnTe = document.getElementById('btn-te');
+
+            if (lang === 'te') {
+                // Show Telugu, hide English
+                englishElements.forEach(el => el.style.display = 'none');
+                teluguElements.forEach(el => el.style.display = 'block');
+                
+                // Toggle Button Highlights
+                btnTe.classList.add('active');
+                btnEn.classList.remove('active');
+            } else {
+                // Show English, hide Telugu
+                englishElements.forEach(el => el.style.display = 'block');
+                teluguElements.forEach(el => el.style.display = 'none');
+                
+                // Toggle Button Highlights
+                btnEn.classList.add('active');
+                btnTe.classList.remove('active');
+            }
+        }
+    </script>
 
 </body>
 </html>
