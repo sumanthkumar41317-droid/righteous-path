@@ -327,6 +327,18 @@
             color: var(--text-medium);
         }
 
+        /* Scroll Animation Target Styling */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-on-scroll.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Featured Verse Box */
         .verse-box {
             background: linear-gradient(135deg, var(--bg-white) 0%, #fefdfb 100%);
@@ -337,7 +349,7 @@
             margin: 50px 0;
             position: relative;
             overflow: hidden;
-            transition: all 0.4s var(--transition);
+            transition: transform 0.4s var(--transition), box-shadow 0.4s var(--transition);
         }
 
         .verse-box::before {
@@ -391,7 +403,7 @@
             padding: 48px 36px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
             border-top: 3px solid transparent;
-            transition: all 0.4s var(--transition);
+            transition: transform 0.4s var(--transition), box-shadow 0.4s var(--transition);
             position: relative;
             overflow: hidden;
         }
@@ -467,7 +479,7 @@
             padding: 32px;
             border-radius: 10px;
             border: 1px solid rgba(212, 165, 116, 0.2);
-            transition: all 0.3s var(--transition);
+            transition: transform 0.3s var(--transition), box-shadow 0.3s var(--transition), border-color 0.3s;
             position: relative;
         }
 
@@ -628,6 +640,127 @@
             margin-top: 24px;
         }
 
+        /* Contact Section */
+        .contact-box {
+            background: linear-gradient(135deg, var(--bg-white) 0%, #fefdfb 100%);
+            border: 2px solid rgba(212, 165, 116, 0.2);
+            border-radius: 16px;
+            padding: 60px 50px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            max-width: 700px;
+            margin: 0 auto;
+            transition: transform 0.4s var(--transition), box-shadow 0.4s var(--transition), border-color 0.4s;
+        }
+
+        .contact-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+            border-color: var(--accent-gold);
+        }
+
+        .contact-icon {
+            font-size: 64px;
+            margin-bottom: 24px;
+            filter: grayscale(20%);
+        }
+
+        .contact-heading {
+            font-family: 'Libre Baskerville', 'Ramabhadra', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 24px;
+        }
+
+        html[lang="te"] .contact-heading {
+            font-family: 'Ramabhadra', 'Noto Sans Telugu', serif;
+        }
+
+        /* Fixed Premium Functional Buttons Layout */
+        .contact-actions-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            margin: 12px 0 24px;
+        }
+
+        .contact-email-btn {
+            display: inline-block;
+            font-family: 'Spectral', serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: white;
+            text-decoration: none;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-warm) 100%);
+            border-radius: 50px;
+            border: none;
+            transition: all 0.3s var(--transition);
+            box-shadow: 0 6px 20px rgba(212, 165, 116, 0.3);
+            cursor: pointer;
+        }
+
+        .contact-email-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(212, 165, 116, 0.5);
+        }
+
+        .copy-email-btn {
+            background: transparent;
+            border: 1px dashed var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s var(--transition);
+            font-family: inherit;
+        }
+
+        .copy-email-btn:hover {
+            background: rgba(212, 165, 116, 0.08);
+            border-style: solid;
+        }
+
+        .contact-subtext {
+            font-size: 0.95rem;
+            color: var(--text-medium);
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .contact-divider {
+            width: 150px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            margin: 32px auto;
+        }
+
+        .contact-response-time,
+        .contact-prayer-request {
+            background: rgba(212, 165, 116, 0.05);
+            padding: 20px 28px;
+            border-radius: 10px;
+            margin: 16px 0;
+            border-left: 3px solid var(--accent-gold);
+        }
+
+        .contact-response-time p,
+        .contact-prayer-request p {
+            font-size: 1rem;
+            color: var(--text-dark);
+            margin: 0;
+            text-align: left;
+        }
+
+        .contact-response-time strong,
+        .contact-prayer-request strong {
+            color: var(--accent-gold);
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .hero h1 {
@@ -685,6 +818,11 @@
             .card {
                 padding: 36px 28px;
             }
+            
+            .contact-email-btn {
+                font-size: 1.1rem;
+                padding: 14px 28px;
+            }
         }
 
         /* Smooth Scroll */
@@ -708,7 +846,7 @@
     <!-- Language Switcher -->
     <div class="lang-switcher-container">
         <span class="lang-switcher-label">Language:</span>
-        <button class="lang-btn active" data-lang="en">English</button>
+        <button class="lang-btn" data-lang="en">English</button>
         <button class="lang-btn" data-lang="te">తెలుగు</button>
     </div>
 
@@ -750,7 +888,7 @@
             నీతిమార్గం కేవలం గమ్యస్థానం మాత్రమే కాదు, విశ్వాసం, పరివర్తన మరియు మన ప్రభువైన యేసుక్రీస్తు అడుగుజాడలను అనుసరించడానికి అచంచలమైన నిబద్ధత యొక్క ప్రయాణం. ముందుకు వేసే ప్రతి అడుగు ఆయన కృప మరియు దయకు సాక్ష్యం.
         </p>
 
-        <div class="verse-box">
+        <div class="verse-box animate-on-scroll">
             <p class="verse-text lang-en">
                 "Your word is a lamp for my feet, a light on my path. I have taken an oath and confirmed it, that I will follow your righteous laws."
             </p>
@@ -768,7 +906,7 @@
         <h2 class="section-title lang-te">మా పరిచర్య</h2>
         
         <div class="grid-container">
-            <div class="card">
+            <div class="card animate-on-scroll">
                 <div class="card-icon">📖</div>
                 <h3 class="lang-en">Biblical Teaching</h3>
                 <h3 class="lang-te">బైబిల్ బోధన</h3>
@@ -776,11 +914,11 @@
                     Dive deep into God's Word with systematic study and clear exposition. We believe Scripture is the foundation of faith and the source of all spiritual wisdom.
                 </p>
                 <p class="lang-te">
-                    క్రమబద్ధమైన అధ్యయనం మరియు స్పష్టమైన వివరణతో దేవుని వాక్యంలో లోతుగా మునిగిపోండి. గ్రంథం విశ్వాసానికి పునాది మరియు అన్ని ఆధ్యాత్మిక జ్ఞానానికి మూలం అని మేము నమ్ముతున్నాము.
+                    క్రమబద్ధమైన అధ్యయనం మరియు స్పష్టమైన వివరణతో దేవుని వాక్యంలో లోతుగా మునిగిపోండి. గ్రంథం విశ్వాసానికి పునాది మరియు అన్ని आध्यात्मिक జ్ఞానానికి మూలం అని మేము నమ్ముతున్నాము.
                 </p>
             </div>
             
-            <div class="card">
+            <div class="card animate-on-scroll">
                 <div class="card-icon">🙏</div>
                 <h3 class="lang-en">Prayer & Fellowship</h3>
                 <h3 class="lang-te">ప్రార్థన & సహవాసం</h3>
@@ -788,11 +926,11 @@
                     Join believers in fervent prayer and authentic community. Together we seek God's face, intercede for one another, and build lasting relationships in Christ.
                 </p>
                 <p class="lang-te">
-                    తీవ్రమైన ప్రార్థన మరియు ప్రామాణికమైన సమాజంలో విశ్వాసులతో చేరండి. కలిసి మనం దేవుని ముఖాన్ని వెతుకుతాము, ఒకరికొకరు మధ్యవర్తిత్వం వహిస్తాము మరియు క్రీస్తులో శాశ్వత సంబంధాలను నిర్మిస్తాము.
+                    తీవ్రమైన ప్రార్థన మరియు ప్రామాణికమైన సమాజంలో విశ్వాసులతో చేరండి. కలిసి మనం దేవుని ముఖాన్ని వెతుకుతాము, ఒకరికొకరు మధ్యవర్తిత్వం వహిస్తాము మరియు క్రీస్తులో శాశ్వత संबंधాలను నిర్మిస్తాము.
                 </p>
             </div>
             
-            <div class="card">
+            <div class="card animate-on-scroll">
                 <div class="card-icon">❤️</div>
                 <h3 class="lang-en">Compassionate Outreach</h3>
                 <h3 class="lang-te">దయాపూర్వక ప్రభావం</h3>
@@ -804,7 +942,7 @@
                 </p>
             </div>
             
-            <div class="card">
+            <div class="card animate-on-scroll">
                 <div class="card-icon">✝️</div>
                 <h3 class="lang-en">Discipleship</h3>
                 <h3 class="lang-te">శిష్యత్వం</h3>
@@ -812,11 +950,11 @@
                     Grow in spiritual maturity through intentional mentorship and accountability. We equip believers to live out their faith with courage and conviction.
                 </p>
                 <p class="lang-te">
-                    ఉద్దేశపూర్వక మార్గదర్శకత్వం మరియు జవాబుదారీతనం ద్వారా ఆధ్యాత్మిక పరిపక్వతలో పెరగండి. ధైర్యం మరియు విశ్వాసంతో వారి విశ్వాసాన్ని జీవించడానికి విశ్వాసులను మేము సన్నద్ధం చేస్తాము.
+                    ఉద్దేశపూర్వక మార్గదర్శకత్వం మరియు జవాబుదారీతనం ద్వారా आध्यात्मिक పరిపక్వతలో పెరగండి. ధైర్యం మరియు విశ్వాసంతో వారి విశ్వాసాన్ని జీవించడానికి విశ్వాసులను మేము సన్నద్ధం చేస్తాము.
                 </p>
             </div>
             
-            <div class="card">
+            <div class="card animate-on-scroll">
                 <div class="card-icon">🌍</div>
                 <h3 class="lang-en">Mission & Evangelism</h3>
                 <h3 class="lang-te">మిషన్ & సువార్త</h3>
@@ -828,7 +966,7 @@
                 </p>
             </div>
             
-            <div class="card">
+            <div class="card animate-on-scroll">
                 <div class="card-icon">🕊️</div>
                 <h3 class="lang-en">Worship & Praise</h3>
                 <h3 class="lang-te">ఆరాధన & స్తుతి</h3>
@@ -836,7 +974,7 @@
                     Lift hearts in joyful worship to our Creator. Through music, prayer, and testimony, we glorify God and experience His transforming presence.
                 </p>
                 <p class="lang-te">
-                    మన సృష్టికర్తకు ఆనందకరమైన ఆరాధనలో హృదయాలను పైకెత్తండి. సంగీతం, ప్రార్థన మరియు సాక్ష్యం ద్వారా, మేము దేవుణ్ణి మహిమపరుస్తాము మరియు ఆయన మార్చే ఉనికిని అనుభవిస్తాము.
+                    మన సృష్టికర్తకు ఆనందకరమైన ఆరాధనలో హృదయాలను పైకెత్తండి. संगीतం, ప్రార్థన మరియు సాక్ష్యం ద్వారా, మేము దేవుణ్ణి మహిమపరుస్తాము మరియు ఆయన మార్చే ఉనికిని అనుభవిస్తాము.
                 </p>
             </div>
         </div>
@@ -855,7 +993,7 @@
         </p>
 
         <div class="teachings-grid">
-            <div class="teaching-item">
+            <div class="teaching-item animate-on-scroll">
                 <div class="teaching-number">1</div>
                 <h4 class="lang-en">Salvation Through Christ Alone</h4>
                 <h4 class="lang-te">క్రీస్తు ద్వారా మాత్రమే రక్షణ</h4>
@@ -867,7 +1005,7 @@
                 </p>
             </div>
             
-            <div class="teaching-item">
+            <div class="teaching-item animate-on-scroll">
                 <div class="teaching-number">2</div>
                 <h4 class="lang-en">Authority of Scripture</h4>
                 <h4 class="lang-te">గ్రంథం యొక్క అధికారం</h4>
@@ -879,7 +1017,7 @@
                 </p>
             </div>
             
-            <div class="teaching-item">
+            <div class="teaching-item animate-on-scroll">
                 <div class="teaching-number">3</div>
                 <h4 class="lang-en">Love God, Love Others</h4>
                 <h4 class="lang-te">దేవుణ్ణి ప్రేమించు, ఇతరులను ప్రేమించు</h4>
@@ -891,7 +1029,7 @@
                 </p>
             </div>
             
-            <div class="teaching-item">
+            <div class="teaching-item animate-on-scroll">
                 <div class="teaching-number">4</div>
                 <h4 class="lang-en">Holy Spirit Empowerment</h4>
                 <h4 class="lang-te">పరిశుద్ధాత్మ శక్తి</h4>
@@ -903,7 +1041,7 @@
                 </p>
             </div>
             
-            <div class="teaching-item">
+            <div class="teaching-item animate-on-scroll">
                 <div class="teaching-number">5</div>
                 <h4 class="lang-en">Second Coming of Christ</h4>
                 <h4 class="lang-te">క్రీస్తు రెండవ రాకడ</h4>
@@ -915,7 +1053,7 @@
                 </p>
             </div>
             
-            <div class="teaching-item">
+            <div class="teaching-item animate-on-scroll">
                 <div class="teaching-number">6</div>
                 <h4 class="lang-en">Unity in the Body</h4>
                 <h4 class="lang-te">దేహంలో ఐక్యత</h4>
@@ -945,6 +1083,63 @@
         <a href="#contact" class="cta-button lang-te">మాతో కనెక్ట్ అవ్వండి</a>
     </section>
 
+    <!-- Contact Section -->
+    <section id="contact" class="section-container">
+        <h2 class="section-title lang-en">Connect With Us</h2>
+        <h2 class="section-title lang-te">మాతో కనెక్ట్ అవ్వండి</h2>
+        
+        <p class="intro-text lang-en">
+            We would love to hear from you. Whether you have questions, need prayer, or want to learn more about our ministry, please reach out to us.
+        </p>
+        <p class="intro-text lang-te">
+            మేము మీ నుండి వినడానికి ఇష్టపడతాము. మీకు ప్రశ్నలు ఉన్నా, ప్రార్థన అవసరమైనా, లేదా మా పరిచర్య గురించి మరింత తెలుసుకోవాలనుకుంటున్నా, దయచేసి మాకు చేరండి.
+        </p>
+
+        <div class="contact-box animate-on-scroll">
+            <div class="contact-icon">✉️</div>
+            <h3 class="contact-heading lang-en">Email Us Today</h3>
+            <h3 class="contact-heading lang-te">మాకు ఇమెయిల్ చేయండి</h3>
+            
+            <!-- Functional Interactive Block -->
+            <div class="contact-actions-container">
+                <a href="mailto:sumanthkumar41317@gmail.com?subject=Inquiry%20/%20Prayer%20Request&body=Dear%20The%20Righteous%20Path%20Ministry,%0A%0AI%20am%20reaching%20out%20to%20you%20regarding..." class="contact-email-btn">
+                    sumanthkumar41317@gmail.com
+                </a>
+                <button class="copy-email-btn" id="copyBtn" onclick="copyEmailToClipboard()">
+                    <span class="lang-en">Copy Email Address</span>
+                    <span class="lang-te">ఇమెయిల్ అడ్రస్ కాపీ చేయండి</span>
+                </button>
+            </div>
+            
+            <p class="contact-subtext lang-en">
+                Click the gold button above to launch your email app automatically, or use the dashed button to copy the address.
+            </p>
+            <p class="contact-subtext lang-te">
+                ఆటోమేటిక్‌గా మీ ఇమెయిల్ యాప్‌ను తెరవడానికి పై బంగారు రంగు బటన్‌ను క్లిక్ చేయండి, లేదా అడ్రస్‌ను కాపీ చేయడానికి క్రింది బటన్‌ను ఉపయోగించండి.
+            </p>
+
+            <div class="contact-divider"></div>
+
+            <div class="contact-response-time">
+                <p class="lang-en">
+                    <strong>Response Time:</strong> We typically respond within 24-48 hours.
+                </p>
+                <p class="lang-te">
+                    <strong>ప్రతిسبంధన సమయం:</strong> మేము సాధారణంగా 24-48 గంటల్లో ప్రతిస్పందిస్తాము.
+                </p>
+            </div>
+
+            <div class="contact-prayer-request">
+                <p class="lang-en">
+                    <strong>Prayer Requests:</strong> Include "Prayer Request" in your subject line for priority attention.
+                </p>
+                <p class="lang-te">
+                    <strong>ప్రార్థన అభ్యర్థనలు:</strong> ప్రాధాన్యత శ్రద్ధ కోసం మీ విషయ పంక్తిలో "ప్రార్థన అభ్యర్థన" చేర్చండి.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="footer-content">
@@ -972,43 +1167,35 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Language Switching -->
+    <!-- JavaScript for Interactive Components -->
     <script>
-        // Language switcher functionality
         const langButtons = document.querySelectorAll('.lang-btn');
         const htmlElement = document.documentElement;
         
-        // Get saved language preference or default to 'en'
+        function setLanguage(langCode) {
+            htmlElement.setAttribute('lang', langCode);
+            localStorage.setItem('preferredLanguage', langCode);
+            
+            langButtons.forEach(btn => {
+                if (btn.dataset.lang === langCode) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+        
+        // Initial configuration load
         const savedLang = localStorage.getItem('preferredLanguage') || 'en';
-        htmlElement.setAttribute('lang', savedLang);
+        setLanguage(savedLang);
         
-        // Update active button based on saved language
-        langButtons.forEach(btn => {
-            if (btn.dataset.lang === savedLang) {
-                btn.classList.add('active');
-            } else {
-                btn.classList.remove('active');
-            }
-        });
-        
-        // Add click event listeners
         langButtons.forEach(button => {
             button.addEventListener('click', () => {
-                const selectedLang = button.dataset.lang;
-                
-                // Update HTML lang attribute
-                htmlElement.setAttribute('lang', selectedLang);
-                
-                // Save preference
-                localStorage.setItem('preferredLanguage', selectedLang);
-                
-                // Update active state
-                langButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
+                setLanguage(button.dataset.lang);
             });
         });
 
-        // Smooth scroll with offset for sticky header
+        // Smooth scroll implementation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1024,33 +1211,55 @@
             });
         });
 
-        // Add fade-in animation for cards on scroll
+        // Safe Clean Scroll Transitions 
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.05,
+            rootMargin: '0px 0px -20px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '0';
-                    entry.target.style.transform = 'translateY(30px)';
-                    entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                    
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, 100);
-                    
+                    entry.target.classList.add('revealed');
                     observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        // Observe all cards and teaching items
-        document.querySelectorAll('.card, .teaching-item').forEach(el => {
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
             observer.observe(el);
         });
+
+        // Clipboard Action Script Logic Layer
+        function copyEmailToClipboard() {
+            const emailAddress = "sumanthkumar41317@gmail.com";
+            const btn = document.getElementById('copyBtn');
+            const currentLang = htmlElement.getAttribute('lang') || 'en';
+            
+            navigator.clipboard.writeText(emailAddress).then(() => {
+                // Temporary success UI update based on active language display
+                if(currentLang === 'te') {
+                    btn.innerHTML = "కాపీ చేయబడింది! 👍";
+                } else {
+                    btn.innerHTML = "Copied Address! 👍";
+                }
+                btn.style.borderColor = "#c49a6c";
+                btn.style.background = "rgba(196, 154, 108, 0.15)";
+                
+                // Return to baseline native configuration state after 3 seconds
+                setTimeout(() => {
+                    btn.style.background = "transparent";
+                    btn.style.borderColor = "var(--accent-gold)";
+                    if(currentLang === 'te') {
+                        btn.innerHTML = `<span class="lang-en" style="display:none !important;">Copy Email Address</span><span class="lang-te" style="display:inline-block !important;">ఇమెయిల్ అడ్రస్ కాపీ చేయండి</span>`;
+                    } else {
+                        btn.innerHTML = `<span class="lang-en" style="display:inline-block !important;">Copy Email Address</span><span class="lang-te" style="display:none !important;">ఇమెయిల్ అడ్రస్ కాపీ చేయండి</span>`;
+                    }
+                }, 3000);
+            }).catch(err => {
+                console.error('Could not copy text: ', err);
+            });
+        }
     </script>
 </body>
 </html>
