@@ -1,147 +1,165 @@
 <!DOCTYPE html>
-<html lang="te">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Righteous Path | Follow His Footsteps</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600&family=Ramabhadra&family=Noto+Sans+Telugu:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* CSS Reset & Variable Setup */
+        :root {
+            --primary-color: #1a252f;
+            --accent-color: #b89742; /* Premium Gold Accent */
+            --text-dark: #2c3e50;
+            --text-light: #f8f9fa;
+            --bg-light: #fdfbf7; /* Off-white warm background */
+            --transition-speed: 0.3s;
+        }
+
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-        
-        :root {
-            --primary-color: #0d121f; /* Cosmic Navy */
-            --accent-color: #d4af37;  /* Elegant gold */
-            --text-light: #f8fafc;    /* Soft off-white */
-            --text-dark: #334155;     /* Slate dark text */
-            --bg-light: #fcfbf7;      /* Warm, paper-like background */
         }
 
         body {
-            font-family: 'Georgia', 'Gautami', serif;
+            font-family: 'Inter', 'Noto Sans Telugu', sans-serif;
             background-color: var(--bg-light);
             color: var(--text-dark);
             line-height: 1.8;
+            overflow-x: hidden;
         }
 
-        /* Language Switcher Navbar */
-        .lang-nav {
-            position: fixed;
-            top: 0;
-            right: 0;
-            left: 0;
-            height: 60px;
-            background: rgba(13, 18, 31, 0.85);
-            backdrop-filter: blur(10px);
+        /* Lang display controller */
+        .lang-en, .lang-te {
+            display: none !important;
+        }
+        
+        html[lang="en"] .lang-en {
+            display: block !important;
+        }
+        
+        html[lang="te"] .lang-te {
+            display: block !important;
+        }
+
+        /* Inline handling for buttons/spans */
+        html[lang="en"] span.lang-en, html[lang="en"] a.lang-en {
+            display: inline-block !important;
+        }
+        html[lang="te"] span.lang-te, html[lang="te"] a.lang-te {
+            display: inline-block !important;
+        }
+
+        /* Language Switcher Bar */
+        .lang-switcher-container {
+            background-color: var(--primary-color);
+            padding: 10px 24px;
             display: flex;
             justify-content: flex-end;
-            align-items: center;
-            padding: 0 2rem;
+            gap: 12px;
+            position: sticky;
+            top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 2px solid var(--accent-color);
         }
 
         .lang-btn {
             background: transparent;
-            color: var(--text-light);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 0.35rem 1rem;
-            margin-left: 0.5rem;
+            border: 1px solid transparent;
+            color: #a0aec0;
             cursor: pointer;
-            font-family: inherit;
             font-size: 0.9rem;
-            transition: all 0.3s ease;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 4px;
+            transition: all var(--transition-speed);
+        }
+
+        .lang-btn:hover {
+            color: var(--text-light);
         }
 
         .lang-btn.active {
-            background-color: var(--accent-color);
-            color: var(--primary-color);
+            color: var(--text-light);
             border-color: var(--accent-color);
-            font-weight: bold;
+            background-color: rgba(184, 151, 66, 0.2);
         }
 
         /* Hero Section */
-        header {
-            background: linear-gradient(rgba(13, 18, 31, 0.85), rgba(13, 18, 31, 0.98)), 
-                        url('https://images.unsplash.com/photo-1599675931211-1a3b567b5e40?q=80&w=2070') no-repeat center center/cover;
-            min-height: 85vh;
+        .hero {
+            background: linear-gradient(rgba(26, 37, 47, 0.85), rgba(26, 37, 47, 0.95)), 
+                        url('https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&q=80&w=1920') no-repeat center center/cover;
+            color: var(--text-light);
+            text-align: center;
+            padding: 120px 20px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 7rem 2rem 2rem 2rem;
-            color: var(--text-light);
-            position: relative;
+            justify-content: center;
+            min-height: 70vh;
         }
 
-        header::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.1), rgba(13, 18, 31, 0) 60%);
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-title {
-            font-size: 3rem;
-            font-weight: 400;
+        .hero h1 {
+            font-family: 'Cinzel', 'Ramabhadra', serif;
+            font-size: 3.5rem;
             letter-spacing: 2px;
-            color: var(--accent-color);
-            margin-bottom: 1rem;
+            margin-bottom: 24px;
+            color: var(--text-light);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
-        .hero-subtitle {
-            font-size: 1.25rem;
-            max-width: 650px;
+        html[lang="te"] .hero h1 {
+            font-family: 'Ramabhadra', 'Noto Sans Telugu', sans-serif;
+            font-size: 3.2rem;
+        }
+
+        .hero p.quote {
             font-style: italic;
-            margin-bottom: 2rem;
-            font-family: 'Times New Roman', serif;
+            max-width: 800px;
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            color: #e2e8f0;
+            position: relative;
         }
 
-        /* Call to Action Button */
-        .btn {
+        .cta-button {
             display: inline-block;
-            background-color: transparent;
-            color: var(--accent-color);
-            border: 2px solid var(--accent-color);
-            padding: 0.75rem 2rem;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .btn:hover {
             background-color: var(--accent-color);
             color: var(--primary-color);
-            font-weight: bold;
+            padding: 14px 32px;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(184, 151, 66, 0.3);
+            transition: all var(--transition-speed);
         }
 
-        /* Section Styling */
-        section {
-            padding: 5rem 2rem;
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(184, 151, 66, 0.5);
+            background-color: #c9a852;
+        }
+
+        /* Main Content Styling */
+        .section-container {
+            max-width: 1100px;
+            margin: 80px auto;
+            padding: 0 20px;
         }
 
         .section-title {
-            font-size: 2.25rem;
+            text-align: center;
+            font-family: 'Cinzel', 'Ramabhadra', serif;
+            font-size: 2.5rem;
             color: var(--primary-color);
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px;
             position: relative;
-            padding-bottom: 1rem;
+            padding-bottom: 15px;
         }
 
         .section-title::after {
@@ -151,163 +169,55 @@
             left: 50%;
             transform: translateX(-50%);
             width: 80px;
-            height: 1px;
+            height: 3px;
             background-color: var(--accent-color);
         }
 
-        /* Scripture Focus Block */
-        .scripture-box {
+        .intro-text {
+            text-align: center;
+            max-width: 850px;
+            margin: 0 auto 50px auto;
+            font-size: 1.15rem;
+            color: #4a5568;
+        }
+
+        /* Featured Verse Box */
+        .verse-box {
             background-color: #fff;
-            border-left: 3px solid var(--accent-color);
-            padding: 2rem;
-            margin: 2rem 0;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border-left: 4px solid var(--accent-color);
+            padding: 30px;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+            margin: 40px 0;
             font-style: italic;
-            text-align: left;
         }
 
-        .scripture-ref {
+        .verse-context {
             display: block;
-            margin-top: 1rem;
+            margin-top: 10px;
+            font-weight: 600;
             font-style: normal;
-            font-weight: bold;
             color: var(--accent-color);
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
         }
 
-        /* Grid Setup */
-        .grid {
+        /* Feature/Ministry Cards Grid */
+        .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
         }
 
         .card {
-            background: #fff;
-            padding: 2.5rem 1.5rem;
-            border: 1px solid #eaeaea;
-            border-radius: 4px;
-            text-align: left;
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-top: 3px solid transparent;
+            transition: all var(--transition-speed);
         }
 
-        .card h3 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-            font-size: 1.35rem;
-            border-bottom: 1px solid #f0f0f0;
-            padding-bottom: 0.5rem;
-        }
-
-        .card .card-verse {
-            font-size: 0.85rem;
-            font-style: italic;
-            color: #777;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        /* Fellowship Invitation Area */
-        .fellowship-container {
-            background-color: var(--primary-color);
-            color: var(--text-light);
-            padding: 5rem 2rem;
-            margin-top: 4rem;
-            border-radius: 4px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-        }
-
-        .fellowship-container h2 {
-            color: var(--accent-color);
-            margin-bottom: 1.5rem;
-            font-weight: 400;
-            letter-spacing: 1px;
-        }
-
-        .fellowship-text {
-            max-width: 650px;
-            margin: 0 auto;
-            font-size: 1.2rem;
-            line-height: 2;
-            font-style: italic;
-            font-family: 'Times New Roman', serif;
-        }
-
-        footer {
-            text-align: center;
-            padding: 3rem 2rem;
-            font-size: 0.9rem;
-            color: #777;
-            background-color: #f1f1f1;
-        }
-
-        /* Language Toggle Display Rules */
-        .lang-te { display: none; } /* Default hiding Telugu elements */
-    </style>
-</head>
-<body>
-
-    <nav class="lang-nav">
-        <button id="btn-en" class="lang-btn active" onclick="switchLanguage('en')">English</button>
-        <button id="btn-te" class="lang-btn" onclick="switchLanguage('te')">తెలుగు</button>
-    </nav>
-
-    <header>
-        <div class="hero-content">
-            <h1 class="hero-title lang-en">The Righteous Path</h1>
-            <h1 class="hero-title lang-te">ధర్మ మార్గం</h1>
-            
-            <p class="hero-subtitle lang-en">"For even the Son of Man did not come to be served, but to serve, and to give his life as a ransom for many."</p>
-            <p class="hero-subtitle lang-te">"మనుష్యకుమారుడు పరిచారము చేయించుకొనుటకు రాలేదు గాని పరిచారము చేయుటకును అనేకులకు ప్రతిగా విమోచన క్రయధనముగా తన ప్రాణము ఇచ్చుటకును వచ్చెను."</p>
-            
-            <a href="#fellowship" class="btn lang-en">Walk as He Walked</a>
-            <a href="#fellowship" class="btn lang-te">ఆయన అడుగుజాడల్లో నడవండి</a>
-        </div>
-    </header>
-
-    <section id="mission">
-        <h2 class="section-title lang-en">Our Master's Blueprint</h2>
-        <h2 class="section-title lang-te">మన ప్రభువు మార్గదర్శకం</h2>
-        
-        <p style="font-size: 1.15rem; max-width: 750px; margin: 0 auto;" class="lang-en">
-            Jesus revolutionized humankind not with wealth or armies, but through radical empathy, reaching down into the dust to elevate the broken. We strive to be His hands and feet across the globe.
-        </p>
-        <p style="font-size: 1.15rem; max-width: 750px; margin: 0 auto;" class="lang-te">
-            యేసుక్రీస్తు సంపదతో లేదా సైన్యాలతో కాకుండా, నిరుపేదలను మరియు నలిగిపోయిన హృదయాలను పైకి లేపడం ద్వారా మానవాళిని ప్రేమతో గెలిచారు. ప్రపంచవ్యాప్తంగా ఆయన చేతులు మరియు పాదాలుగా సేవ చేయడానికి మేము ప్రయత్నిస్తున్నాము.
-        </p>
-
-        <div class="scripture-box lang-en">
-            "He has anointed me to proclaim good news to the poor. He has sent me to proclaim freedom for the prisoners and recovery of sight for the blind, to set the oppressed free."
-            <span class="scripture-ref">Luke 4:18</span>
-        </div>
-        <div class="scripture-box lang-te">
-            "దరిద్రులకు సువార్త ప్రకటించుటకై ప్రభువు నన్ను అభిషేకించెను; చెరలో నున్నవారికి విడుదలను, గ్రుడ్డివారికి చూపును ప్రకటించుటకును, నలిగినవారిని విడిపించుటకును ఆయన నన్ను పంపియున్నాడు."
-            <span class="scripture-ref">లూకా 4:18</span>
-        </div>
-    </section>
-
-    <section style="background-color: #fff; max-width: 100%; border-top: 1px solid #f0f0f0;">
-        <div style="max-width: 900px; margin: 0 auto;">
-            <h2 class="section-title lang-en">The Ministry of Compassion</h2>
-            <h2 class="section-title lang-te">కరుణతో కూడిన సేవ</h2>
-            
-            <div class="grid">
-                
-                <div class="card">
-                    <h3 class="lang-en">Feeding the Hungry</h3>
-                    <h3 class="lang-te">ఆకలితో ఉన్నవారికి అన్నదానం</h3>
-                    
-                    <span class="card-verse lang-en">"Jesus took the five loaves and the two fish... and gave them to the disciples to distribute..." — Luke 9:16</span>
-                    <span class="card-verse lang-te">"యేసు ఆ ఐదు రొట్టెలను రెండు చేపలను పట్టుకొని... శిష్యులకు వడ్డించమని ఇచ్చెను..." — లూకా 9:16</span>
-                    
-                    <p class="lang-en">Following His miracle of provision, we dedicate ourselves to eliminating physical hunger, understanding that a nourished body prepares the heart to receive spiritual love.</p>
-                    <p class="lang-te">ఆయన చూపిన అద్భుతమైన మార్గంలో, మేము ఆకలిని నిర్మూలించడానికి మమ్మల్ని మేము సమర్పించుకుంటున్నాము. ఆహారం పొందిన శరీరం దైవిక ప్రేమను స్వీకరించడానికి సిద్ధంగా ఉంటుందని మేము నమ్ముతున్నాము.</p>
-                </div>
-                
-                <div class="card">
-                    <h3 class="lang-en">Healing the Broken</h3>
-                    <h3 class="lang-te">నలిగిన హృదయాలను ఆదరించడం</h3>
-                    
-                    <span class="card-verse lang-en">"When he saw the crowds, he had compassion on them, because they
+        .card:hover {
+            transform: translateY(-5px);
+            border-top-color: var(--accent-color);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.
