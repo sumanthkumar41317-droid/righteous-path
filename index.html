@@ -209,55 +209,30 @@
             display: block;
         }
 
-        /* Connect Form */
-        .form-container {
+        /* Fellowship Invitation Area (Replaced Form) */
+        .fellowship-container {
             background-color: var(--primary-color);
             color: var(--text-light);
-            padding: 4rem 2rem;
+            padding: 5rem 2rem;
             margin-top: 4rem;
             border-radius: 4px;
-        }
-
-        .form-container h2 {
-            color: var(--accent-color);
-            margin-bottom: 1rem;
-        }
-
-        .contact-form {
-            max-width: 500px;
-            margin: 2rem auto 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-        }
-
-        .contact-form input, .contact-form textarea {
-            width: 100%;
-            padding: 0.85rem;
             border: 1px solid rgba(212, 175, 55, 0.3);
-            background-color: rgba(255, 255, 255, 0.05);
-            color: #fff;
-            font-family: inherit;
         }
 
-        .contact-form input:focus, .contact-form textarea:focus {
-            outline: 1px solid var(--accent-color);
-        }
-
-        .contact-form .btn-submit {
-            background-color: var(--accent-color);
-            color: var(--primary-color);
-            border: none;
-            padding: 1rem;
-            font-weight: bold;
-            text-transform: uppercase;
+        .fellowship-container h2 {
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
             letter-spacing: 1px;
-            transition: background 0.3s ease;
         }
 
-        .contact-form .btn-submit:hover {
-            background-color: #f1c40f;
-            cursor: pointer;
+        .fellowship-text {
+            max-width: 650px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 2;
+            font-style: italic;
+            font-family: 'Times New Roman', serif;
         }
 
         footer {
@@ -287,10 +262,10 @@
             <h1 class="hero-title lang-te">ధర్మ మార్గం</h1>
             
             <p class="hero-subtitle lang-en">"For even the Son of Man did not come to be served, but to serve, and to give his life as a ransom for many."</p>
-            <p class="hero-subtitle lang-te">"మనుష్యకుమారుడు పరిచారము చేయించుకొనుటకు రాలేదు గాని పరిచారము చేయుటకును अनेకులకు ప్రతిగా విమోచన క్రయధనముగా తన ప్రాణము ఇచ్చుటకును వచ్చెను."</p>
+            <p class="hero-subtitle lang-te">"మనుష్యకుమారుడు పరిచారము చేయించుకొనుటకు రాలేదు గాని పరిచారము చేయుటకును అనేకులకు ప్రతిగా విమోచన క్రయధనముగా తన ప్రాణము ఇచ్చుటకును వచ్చెను."</p>
             
-            <a href="#join" class="btn lang-en">Walk as He Walked</a>
-            <a href="#join" class="btn lang-te">ఆయన అడుగుజాడల్లో నడవండి</a>
+            <a href="#fellowship" class="btn lang-en">Walk as He Walked</a>
+            <a href="#fellowship" class="btn lang-te">ఆయన అడుగుజాడల్లో నడవండి</a>
         </div>
     </header>
 
@@ -354,7 +329,7 @@
                     <h3 class="lang-te">నిరుపేదలను పైకి లేపడం</h3>
                     
                     <span class="card-verse lang-en">"Truly I tell you, whatever you did for one of the least of these brothers and sisters of mine, you did for me." — Matthew 25:40</span>
-                    <span class="card-verse lang-te">"మిక్కిలి అల్పులైన యీ నా సహోదరులలో ఒకనికి మీరు చేసితిరి గనుక నాకు చేసితిరని నిశ్చయముగా మీతో చెప్పుచున్నాను." — మత్తయి 25:40</span>
+                    <span class="card-verse lang-te">"మిక్కిలి అల్పులైన యี నా సహోదరులలో ఒకనికి మీరు చేసితిరి గనుక నాకు చేసితిరని నిశ్చయముగా మీతో చెప్పుచున్నాను." — మత్తయి 25:40</span>
                     
                     <p class="lang-en">Recognizing the divine worth in every single human being, our mission actively seeks out the destitute to restore dignity, hope, and real-world relief.</p>
                     <p class="lang-te">ప్రతి మనిషిలోనూ దైవత్వాన్ని గుర్తిస్తూ, మా మిషన్ నిరుపేదలను వెతుక్కుంటూ వెళ్లి వారికి గౌరవాన్ని, ఆశను మరియు నిజమైన సహాయాన్ని అందిస్తుంది.</p>
@@ -376,23 +351,18 @@
         </div>
     </section>
 
-    <!-- Connect Form -->
-    <section id="join" style="padding: 0 2rem;">
-        <div class="form-container">
-            <h2 class="lang-en">Join the Global Fellowship</h2>
-            <h2 class="lang-te">ఈ దైవిక సేవలో భాగస్వామ్యులు అవ్వండి</h2>
+    <!-- Voluntary Fellowship Message Area -->
+    <section id="fellowship" style="padding: 0 2rem;">
+        <div class="fellowship-container">
+            <h2 class="lang-en">A Shared Call to Kindness</h2>
+            <h2 class="lang-te">కరుణతో కూడిన ఉమ్మడి పిలుపు</h2>
             
-            <p class="lang-en">If you are ready to put love into motion and serve humanity just as Jesus did, connect with us today.</p>
-            <p class="lang-te">మీరు కూడా ప్రేమను చేతల్లో చూపిస్తూ, యేసుక్రీస్తు వలె మానవాళికి సేవ చేయడానికి సిద్ధంగా ఉంటే, ఈ రోజు మాతో కనెక్ట్ అవ్వండి.</p>
-            
-            <form class="contact-form" action="#" method="POST">
-                <input type="text" name="name" placeholder="Your Name / మీ పేరు" required>
-                <input type="email" name="email" placeholder="Your Email Address / మీ ఈమెయిల్" required>
-                <textarea name="message" rows="5" placeholder="Share how your heart desires to serve... / మీ హృదయపూర్వక సేవా భావాన్ని పంచుకోండి..." required></textarea>
-                
-                <button type="submit" class="btn-submit lang-en">Offer My Hands</button>
-                <button type="submit" class="btn-submit lang-te">నా సహాయం అందిస్తాను</button>
-            </form>
+            <p class="fellowship-text lang-en">
+                "This mission carries no earthly weight, driven neither by obligation nor material gain. We are simply a gathering of souls choosing to walk righteously. If your heart is naturally moved by kindness and a quiet desire to serve humankind, let us move forward in unity—sharing love wherever the spirit leads."
+            </p>
+            <p class="fellowship-text lang-te">
+                "ఈ మిషన్ ఏ లౌకిక ప్రయోజనాల కోసమో, బలవంతం తోనో చేసేది కాదు. ఇది కేవలం నీతి మార్గంలో నడవాలని ఆశించే ఆత్మల కలయిక. మీ హృదయం సహజంగానే కరుణతో, మానవాళికి సేవ చేయాలనే నిశ్శబ్ద సంకల్పంతో స్పందిస్తే, దైవకృప నడిపించే ప్రతిచోటా ప్రేమను పంచుతూ మనమందరం కలిసికట్టుగా ముందుకు సాగుదాం."
+            </p>
         </div>
     </section>
 
@@ -411,19 +381,13 @@
             const btnTe = document.getElementById('btn-te');
 
             if (lang === 'te') {
-                // Show Telugu, hide English
                 englishElements.forEach(el => el.style.display = 'none');
                 teluguElements.forEach(el => el.style.display = 'block');
-                
-                // Toggle Button Highlights
                 btnTe.classList.add('active');
                 btnEn.classList.remove('active');
             } else {
-                // Show English, hide Telugu
                 englishElements.forEach(el => el.style.display = 'block');
                 teluguElements.forEach(el => el.style.display = 'none');
-                
-                // Toggle Button Highlights
                 btnEn.classList.add('active');
                 btnTe.classList.remove('active');
             }
