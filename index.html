@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Righteous Path | Join the Mission</title>
+    <title>The Righteous Path | Follow His Footsteps</title>
     <style>
         /* CSS Reset & Variable Setup */
         * {
@@ -13,7 +13,7 @@
         }
         
         :root {
-            --primary-color: #0d121f; /* Deeper Cosmic Navy */
+            --primary-color: #0d121f; /* Cosmic Navy */
             --accent-color: #d4af37;  /* Elegant gold */
             --text-light: #f8fafc;    /* Soft off-white */
             --text-dark: #334155;     /* Slate dark text */
@@ -27,7 +27,7 @@
             line-height: 1.8;
         }
 
-        /* Hero Section - UPDATED BACKGROUND */
+        /* Hero Section */
         header {
             background: linear-gradient(rgba(13, 18, 31, 0.85), rgba(13, 18, 31, 0.98)), 
                         url('https://images.unsplash.com/photo-1599675931211-1a3b567b5e40?q=80&w=2070') no-repeat center center/cover;
@@ -42,7 +42,6 @@
             position: relative;
         }
 
-        /* Subtly emphasizing the globe theme in the background overlay */
         header::before {
             content: "";
             position: absolute;
@@ -53,7 +52,7 @@
 
         .hero-content {
             position: relative;
-            z-index: 2; /* Ensures text is above the radial gradient */
+            z-index: 2;
         }
 
         .hero-title {
@@ -142,7 +141,7 @@
             letter-spacing: 1px;
         }
 
-        /* Grid / Columns for Mission Pillars */
+        /* Grid / Columns for Christ's Ministry Model */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -155,12 +154,23 @@
             padding: 2.5rem 1.5rem;
             border: 1px solid #eaeaea;
             border-radius: 4px;
+            text-align: left;
         }
 
         .card h3 {
             color: var(--primary-color);
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             font-size: 1.35rem;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 0.5rem;
+        }
+
+        .card .card-verse {
+            font-size: 0.85rem;
+            font-style: italic;
+            color: #777;
+            margin-bottom: 1rem;
+            display: block;
         }
 
         /* Connect Form */
@@ -229,71 +239,81 @@
     <header>
         <div class="hero-content">
             <h1 class="hero-title">The Righteous Path</h1>
-            <p class="hero-subtitle">"Let all that you do be done in love."</p>
-            <a href="#join" class="btn">Join the Mission</a>
+            <p class="hero-subtitle">"For even the Son of Man did not come to be served, but to serve, and to give his life as a ransom for many."</p>
+            <a href="#join" class="btn">Walk as He Walked</a>
         </div>
     </header>
 
     <!-- Mission Intent -->
     <section id="mission">
-        <h2 class="section-title">Our Purpose</h2>
+        <h2 class="section-title">Our Master's Blueprint</h2>
         <p style="font-size: 1.15rem; max-width: 750px; margin: 0 auto;">
-            We are a collective of souls devoted to answering the ultimate call: to walk righteously, spread unconditional love, and lift up the poor, destitute, and forgotten members of our human family.
+            Jesus revolutionized humankind not with wealth or armies, but through radical empathy, reaching down into the dust to elevate the broken. We strive to be His hands and feet across the globe.
         </p>
 
         <div class="scripture-box">
-            "But do not forget to do good and to share with others, for with such sacrifices God is pleased."
-            <span class="scripture-ref">Hebrews 13:16</span>
+            "He has anointed me to proclaim good news to the poor. He has sent me to proclaim freedom for the prisoners and recovery of sight for the blind, to set the oppressed free."
+            <span class="scripture-ref">Luke 4:18</span>
         </div>
     </section>
 
-    <!-- Pillars of Work -->
+    <!-- Christ's Ministry Layout -->
     <section style="background-color: #fff; max-width: 100%; border-top: 1px solid #f0f0f0;">
         <div style="max-width: 900px; margin: 0 auto;">
-            <h2 class="section-title">Acts of Kindness</h2>
+            <h2 class="section-title">The Ministry of Compassion</h2>
             <div class="grid">
+                
+                <!-- Pillar 1 -->
                 <div class="card">
-                    <h3>Inspire Hearts</h3>
-                    <p>Revitalizing spirits through shared wisdom, fellowship, and constant encouragement grounded in faith.</p>
+                    <h3>Feeding the Hungry</h3>
+                    <span class="card-verse">"Jesus took the five loaves and the two fish... and gave them to the disciples to distribute..." — Luke 9:16</span>
+                    <p>Following His miracle of provision, we dedicate ourselves to eliminating physical hunger, understanding that a nourished body prepares the heart to receive spiritual love.</p>
                 </div>
+                
+                <!-- Pillar 2 -->
                 <div class="card">
-                    <h3>Uplift the Destitute</h3>
-                    <p>Providing essential resources, nourishment, and active community outreach to those experiencing poverty.</p>
+                    <h3>Healing the Broken</h3>
+                    <span class="card-verse">"When he saw the crowds, he had compassion on them, because they were harassed and helpless..." — Matthew 9:36</span>
+                    <p>Jesus moved toward pain, never away from it. We provide emotional support, fellowship, and basic aid to the lonely, outcast, and abandoned souls in society.</p>
                 </div>
+                
+                <!-- Pillar 3 -->
                 <div class="card">
-                    <h3>Unite Forces</h3>
-                    <p>Building a transparent network of hands and hearts ready to deploy help whenever and wherever it is needed.</p>
+                    <h3>Uplifting the Lowly</h3>
+                    <span class="card-verse">"Truly I tell you, whatever you did for one of the least of these brothers and sisters of mine, you did for me." — Matthew 25:40</span>
+                    <p>Recognizing the divine worth in every single human being, our mission actively seeks out the destitute to restore dignity, hope, and real-world relief.</p>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Divine Promise Quote -->
+    <!-- Call to True Discipleship -->
     <section>
         <div class="scripture-box" style="border-left: none; border-right: 3px solid var(--accent-color); text-align: right;">
-            "Whoever is kind to the poor lends to the Lord, and he will reward them for what they have done."
-            <span class="scripture-ref">Proverbs 19:17</span>
+            "Dear children, let us not love with words or speech but with actions and in truth."
+            <span class="scripture-ref">1 John 3:18</span>
         </div>
     </section>
 
-    <!-- Connect / Call to Action Form -->
+    <!-- Connect Form -->
     <section id="join" style="padding: 0 2rem;">
         <div class="form-container">
-            <h2>Join Hands in Love</h2>
-            <p>If your heart resonates with this calling, enter your details below. Let us combine our efforts to change lives together.</p>
+            <h2>Join the Global Fellowship</h2>
+            <p>If you are ready to put love into motion and serve humanity just as Jesus did, connect with us today.</p>
             
             <form class="contact-form" action="#" method="POST">
                 <input type="text" name="name" placeholder="Your Name" required>
                 <input type="email" name="email" placeholder="Your Email Address" required>
-                <textarea name="message" rows="5" placeholder="Tell us how you would like to contribute or collaborate..." required></textarea>
-                <button type="submit" class="btn-submit">Submit Intent</button>
+                <textarea name="message" rows="5" placeholder="Share how your heart desires to serve or collaborate in this mission..." required></textarea>
+                <button type="submit" class="btn-submit">Offer My Hands</button>
             </form>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 The Righteous Path Mission. Driven by faith, built for humanity.</p>
+        <p>&copy; 2026 The Righteous Path Mission. Rooted in Christ's love, built for all humankind.</p>
     </footer>
 
 </body>
