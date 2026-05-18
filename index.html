@@ -30,7 +30,7 @@
         }
 
         body {
-            font-family: 'Spectral', 'Noto Sans Telugu', serif;
+            font-family: 'Spectral', 'Noto Sans Telugu', sans-serif;
             background-color: var(--bg-cream);
             color: var(--text-dark);
             line-height: 1.75;
@@ -77,6 +77,11 @@
         html[lang="te"] a.lang-te,
         html[lang="te"] button.lang-te {
             display: inline-block !important;
+        }
+
+        /* Font optimization switch based on selected DOM state */
+        html[lang="te"] body {
+            font-family: 'Noto Sans Telugu', 'Ramabhadra', sans-serif;
         }
 
         /* Language Switcher */
@@ -186,7 +191,7 @@
         }
 
         html[lang="te"] .hero h1 {
-            font-family: 'Ramabhadra', 'Noto Sans Telugu', serif;
+            font-family: 'Ramabhadra', 'Noto Sans Telugu', sans-serif;
             font-size: 4rem;
             font-weight: 700;
         }
@@ -205,7 +210,7 @@
         }
 
         .hero p.quote {
-            font-family: 'Crimson Text', serif;
+            font-family: 'Crimson Text', 'Noto Sans Telugu', serif;
             font-style: italic;
             font-size: 1.35rem;
             line-height: 1.8;
@@ -216,6 +221,10 @@
             margin-right: auto;
             opacity: 0;
             animation: fadeInUp 1s 0.4s forwards var(--transition);
+        }
+
+        html[lang="te"] .hero p.quote {
+            font-style: normal;
         }
 
         .cta-button {
@@ -304,7 +313,7 @@
         }
 
         html[lang="te"] .section-title {
-            font-family: 'Ramabhadra', 'Noto Sans Telugu', serif;
+            font-family: 'Ramabhadra', 'Noto Sans Telugu', sans-serif;
         }
 
         .section-title::after {
@@ -370,13 +379,17 @@
         }
 
         .verse-text {
-            font-family: 'Crimson Text', serif;
+            font-family: 'Crimson Text', 'Noto Sans Telugu', serif;
             font-style: italic;
             font-size: 1.3rem;
             line-height: 1.9;
             color: var(--text-dark);
             position: relative;
             z-index: 1;
+        }
+
+        html[lang="te"] .verse-text {
+            font-style: normal;
         }
 
         .verse-context {
@@ -457,7 +470,7 @@
         }
 
         html[lang="te"] .card h3 {
-            font-family: 'Ramabhadra', 'Noto Sans Telugu', serif;
+            font-family: 'Ramabhadra', 'Noto Sans Telugu', sans-serif;
         }
 
         .card p {
@@ -528,7 +541,7 @@
         }
 
         html[lang="te"] .teaching-item h4 {
-            font-family: 'Ramabhadra', 'Noto Sans Telugu', serif;
+            font-family: 'Ramabhadra', 'Noto Sans Telugu', sans-serif;
         }
 
         .teaching-item p {
@@ -571,7 +584,7 @@
         }
 
         html[lang="te"] .cta-section h2 {
-            font-family: 'Ramabhadra', 'Noto Sans Telugu', serif;
+            font-family: 'Ramabhadra', 'Noto Sans Telugu', sans-serif;
         }
 
         .cta-section p {
@@ -617,7 +630,7 @@
         }
 
         html[lang="te"] .footer-title {
-            font-family: 'Ramabhadra', 'Noto Sans Telugu', serif;
+            font-family: 'Ramabhadra', 'Noto Sans Telugu', sans-serif;
         }
 
         .footer-text {
@@ -674,7 +687,7 @@
         }
 
         html[lang="te"] .contact-heading {
-            font-family: 'Ramabhadra', 'Noto Sans Telugu', serif;
+            font-family: 'Ramabhadra', 'Noto Sans Telugu', sans-serif;
         }
 
         /* Fixed Premium Functional Buttons Layout */
@@ -688,7 +701,7 @@
 
         .contact-email-btn {
             display: inline-block;
-            font-family: 'Spectral', serif;
+            font-family: 'Spectral', 'Noto Sans Telugu', sans-serif;
             font-size: 1.35rem;
             font-weight: 600;
             color: white;
@@ -730,6 +743,10 @@
             color: var(--text-medium);
             margin-bottom: 24px;
             font-style: italic;
+        }
+
+        html[lang="te"] .contact-subtext {
+            font-style: normal;
         }
 
         .contact-divider {
@@ -843,14 +860,12 @@
     </style>
 </head>
 <body>
-    <!-- Language Switcher -->
     <div class="lang-switcher-container">
         <span class="lang-switcher-label">Language:</span>
         <button class="lang-btn" data-lang="en">English</button>
         <button class="lang-btn" data-lang="te">తెలుగు</button>
     </div>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1 class="lang-en">The Righteous Path</h1>
@@ -876,7 +891,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section class="section-container">
         <h2 class="section-title lang-en">Walking in His Light</h2>
         <h2 class="section-title lang-te">ఆయన వెలుగులో నడుచుట</h2>
@@ -900,7 +914,6 @@
         </div>
     </section>
 
-    <!-- Ministry Cards Section -->
     <section id="ministry" class="section-container">
         <h2 class="section-title lang-en">Our Ministry</h2>
         <h2 class="section-title lang-te">మా పరిచర్య</h2>
@@ -914,7 +927,7 @@
                     Dive deep into God's Word with systematic study and clear exposition. We believe Scripture is the foundation of faith and the source of all spiritual wisdom.
                 </p>
                 <p class="lang-te">
-                    క్రమబద్ధమైన అధ్యయనం మరియు స్పష్టమైన వివరణతో దేవుని వాక్యంలో లోతుగా మునిగిపోండి. గ్రంథం విశ్వాసానికి పునాది మరియు అన్ని आध्यात्मिक జ్ఞానానికి మూలం అని మేము నమ్ముతున్నాము.
+                    క్రమబద్ధమైన అధ్యయనం మరియు స్పష్టమైన వివరణతో దేవుని వాక్యంలో లోతుగా మునిగిపోండి. గ్రంథం విశ్వాసానికి పునాది మరియు అన్ని ఆధ్యాత్మిక జ్ఞానానికి మూలం అని మేము నమ్ముతున్నాము.
                 </p>
             </div>
             
@@ -926,7 +939,7 @@
                     Join believers in fervent prayer and authentic community. Together we seek God's face, intercede for one another, and build lasting relationships in Christ.
                 </p>
                 <p class="lang-te">
-                    తీవ్రమైన ప్రార్థన మరియు ప్రామాణికమైన సమాజంలో విశ్వాసులతో చేరండి. కలిసి మనం దేవుని ముఖాన్ని వెతుకుతాము, ఒకరికొకరు మధ్యవర్తిత్వం వహిస్తాము మరియు క్రీస్తులో శాశ్వత संबंधాలను నిర్మిస్తాము.
+                    తీవ్రమైన ప్రార్థన మరియు ప్రామాణికమైన సమాజంలో విశ్వాసులతో చేరండి. కలిసి మనం దేవుని ముఖాన్ని వెతుకుతాము, ఒకరికొకరు మధ్యవర్తిత్వం వహిస్తాము మరియు క్రీస్తులో శాశ్వత సంబంధాలను నిర్మిస్తాము.
                 </p>
             </div>
             
@@ -950,7 +963,7 @@
                     Grow in spiritual maturity through intentional mentorship and accountability. We equip believers to live out their faith with courage and conviction.
                 </p>
                 <p class="lang-te">
-                    ఉద్దేశపూర్వక మార్గదర్శకత్వం మరియు జవాబుదారీతనం ద్వారా आध्यात्मिक పరిపక్వతలో పెరగండి. ధైర్యం మరియు విశ్వాసంతో వారి విశ్వాసాన్ని జీవించడానికి విశ్వాసులను మేము సన్నద్ధం చేస్తాము.
+                    ఉద్దేశపూర్వక మార్గదర్శకత్వం మరియు జవాబుదారీతనం ద్వారా ఆధ్యాత్మిక పరిపక్వతలో పెరగండి. ధైర్యం మరియు విశ్వాసంతో వారి విశ్వాసాన్ని జీవించడానికి విశ్వాసులను మేము సన్నద్ధం చేస్తాము.
                 </p>
             </div>
             
@@ -974,13 +987,12 @@
                     Lift hearts in joyful worship to our Creator. Through music, prayer, and testimony, we glorify God and experience His transforming presence.
                 </p>
                 <p class="lang-te">
-                    మన సృష్టికర్తకు ఆనందకరమైన ఆరాధనలో హృదయాలను పైకెత్తండి. संगीतం, ప్రార్థన మరియు సాక్ష్యం ద్వారా, మేము దేవుణ్ణి మహిమపరుస్తాము మరియు ఆయన మార్చే ఉనికిని అనుభవిస్తాము.
+                    మన సృష్టికర్తకు ఆనందకరమైన ఆరాధనలో హృదయాలను పైకెత్తండి. సంగీతం, ప్రార్థన మరియు సాక్ష్యం ద్వారా, మేము దేవుణ్ణి మహిమపరుస్తాము మరియు ఆయన మార్చే ఉనికిని అనుభవిస్తాము.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- Core Teachings Section -->
     <section class="section-container">
         <h2 class="section-title lang-en">Core Teachings</h2>
         <h2 class="section-title lang-te">ప్రధాన బోధనలు</h2>
@@ -1032,7 +1044,7 @@
             <div class="teaching-item animate-on-scroll">
                 <div class="teaching-number">4</div>
                 <h4 class="lang-en">Holy Spirit Empowerment</h4>
-                <h4 class="lang-te">పరిశుద్ధాత్మ శక్తి</h4>
+                <h4 class="lang-te">పరిశుద్ధాత్మ शक्ति</h4>
                 <p class="lang-en">
                     The Holy Spirit indwells believers, empowering us for service, sanctifying our hearts, and bearing fruit in our lives for God's glory.
                 </p>
@@ -1067,7 +1079,6 @@
         </div>
     </section>
 
-    <!-- Call to Action Section -->
     <section class="cta-section">
         <h2 class="lang-en">Ready to Take the Next Step?</h2>
         <h2 class="lang-te">తదుపరి అడుగు వేయడానికి సిద్ధంగా ఉన్నారా?</h2>
@@ -1083,7 +1094,6 @@
         <a href="#contact" class="cta-button lang-te">మాతో కనెక్ట్ అవ్వండి</a>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="section-container">
         <h2 class="section-title lang-en">Connect With Us</h2>
         <h2 class="section-title lang-te">మాతో కనెక్ట్ అవ్వండి</h2>
@@ -1100,7 +1110,6 @@
             <h3 class="contact-heading lang-en">Email Us Today</h3>
             <h3 class="contact-heading lang-te">మాకు ఇమెయిల్ చేయండి</h3>
             
-            <!-- Functional Interactive Block -->
             <div class="contact-actions-container">
                 <a href="mailto:sumanthkumar41317@gmail.com?subject=Inquiry%20/%20Prayer%20Request&body=Dear%20The%20Righteous%20Path%20Ministry,%0A%0AI%20am%20reaching%20out%20to%20you%20regarding..." class="contact-email-btn">
                     sumanthkumar41317@gmail.com
@@ -1125,7 +1134,7 @@
                     <strong>Response Time:</strong> We typically respond within 24-48 hours.
                 </p>
                 <p class="lang-te">
-                    <strong>ప్రతిسبంధన సమయం:</strong> మేము సాధారణంగా 24-48 గంటల్లో ప్రతిస్పందిస్తాము.
+                    <strong>ప్రతిస్పందన సమయం:</strong> మేము సాధారణంగా 24-48 గంటల్లో ప్రతిస్పందిస్తాము.
                 </p>
             </div>
 
@@ -1140,7 +1149,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <h3 class="footer-title lang-en">The Righteous Path</h3>
@@ -1167,7 +1175,6 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Interactive Components -->
     <script>
         const langButtons = document.querySelectorAll('.lang-btn');
         const htmlElement = document.documentElement;
